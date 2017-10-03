@@ -30,5 +30,5 @@ build:
   parallel: true
   verbosity: detailed
 artifacts:
-  - path: Fasettor.Word\bin\$(platform)\$(configuration)\
-    name: Fasettor.Word$(platform)_$(appveyor_build_version)
+  - path: Fasetto.Word\bin\$(platform)\$(configuration)\
+    name: Fasetto.Word$(platform)_$(appveyor_build_version)
