@@ -1,0 +1,31 @@
+﻿version: 0.1.{build}-{branch}
+skip_tags: true
+pull_requests:
+  do_not_increment_build_number: true
+image: Visual Studio 2017
+configuration: Release
+branches:
+  # blacklist
+  except:
+    - gh-pages
+matrix:
+  fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
+  allow_failures:
+    - platform: x86
+      configuration: Release
+    - platform: x64
+      configuration: Release
+before_build:
+  appveyor-retry nuget restore
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+build:
+  parallel: true
+  verbosity: detailed
+artifacts:
+  - path: Fasettor.Word\bin\$(platform)\$(configuration)\
+    name: Fasettor.Word$(platform)_$(appveyor_build_version)

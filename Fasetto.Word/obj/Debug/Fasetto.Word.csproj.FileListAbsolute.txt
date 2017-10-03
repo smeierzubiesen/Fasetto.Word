@@ -22,3 +22,5 @@ c:\users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\
 c:\users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Resources\Styles\Colours.baml
 c:\users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Resources\Styles\Fonts.baml
 c:\users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Pages\LoginPage.g.cs
+C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Pages\LoginPage.baml
