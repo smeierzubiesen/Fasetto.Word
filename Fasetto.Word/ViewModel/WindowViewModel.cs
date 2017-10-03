@@ -109,6 +109,11 @@ namespace Fasetto.Word
         /// </summary>
         public int WindowMinimumHeight { get; set; } = 400;
 
+        /// <summary>
+        /// The current page of the App
+        /// </summary>
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+
         #endregion
 
         #region Constructor
