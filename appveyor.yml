@@ -28,7 +28,7 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   parallel: true
-  verbosity: detailed
+  verbosity: minimal
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
     name: Fasetto.Word-($(appveyor_build_version))-$(platform)
