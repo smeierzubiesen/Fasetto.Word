@@ -91,6 +91,6 @@
                       />
     </WindowChrome.WindowChrome>
     <Grid Background="{StaticResource BackgroundVeryLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" />
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
     </Grid>
 </Window>
