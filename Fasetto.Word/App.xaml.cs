@@ -1,4 +1,13 @@
-﻿namespace Fasetto.Word
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="App.xaml.cs" company="mitos[dash]kalandiel">
+//   
+// </copyright>
+// <summary>
+//   Defines the App type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Fasetto.Word
 {
     using System.Windows;
 
