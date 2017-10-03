@@ -121,14 +121,8 @@
         /// </summary>
         public int OuterMarginSize
         {
-            get
-            {
-                return this.Borderless ? 0 : this.outerMarginSize;
-            }
-            set
-            {
-                this.outerMarginSize = value;
-            }
+            get => this.Borderless ? 0 : this.outerMarginSize;
+            set => this.outerMarginSize = value;
         }
 
         /// <summary>
@@ -141,14 +135,8 @@
         /// </summary>
         public int WindowRadius
         {
-            get
-            {
-                return this.Borderless ? 0 : this.windowRadius;
-            }
-            set
-            {
-                this.windowRadius = value;
-            }
+            get => this.Borderless ? 0 : this.windowRadius;
+            set => this.windowRadius = value;
         }
 
         /// <summary>

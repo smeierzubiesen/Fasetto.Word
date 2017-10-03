@@ -26,14 +26,9 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
 build:
   parallel: true
-  verbosity: detailed
+  verbosity: minimal
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
-    name: Fasetto.Word$(platform)_$(appveyor_build_version)
+    name: Fasetto.Word-$(appveyor_build_version)-$(platform)
