@@ -135,14 +135,8 @@
         /// </summary>
         public int WindowRadius
         {
-            get
-            {
-                return this.Borderless ? 0 : this.windowRadius;
-            }
-            set
-            {
-                this.windowRadius = value;
-            }
+            get => this.Borderless ? 0 : this.windowRadius;
+            set => this.windowRadius = value;
         }
 
         /// <summary>
