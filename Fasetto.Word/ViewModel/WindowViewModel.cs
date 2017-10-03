@@ -121,14 +121,8 @@
         /// </summary>
         public int OuterMarginSize
         {
-            get
-            {
-                return this.Borderless ? 0 : this.outerMarginSize;
-            }
-            set
-            {
-                this.outerMarginSize = value;
-            }
+            get => this.Borderless ? 0 : this.outerMarginSize;
+            set => this.outerMarginSize = value;
         }
 
         /// <summary>
