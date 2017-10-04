@@ -1,28 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="LoginPage.xaml.cs" company="mitos[dash]kalandiel">
+//   2017 by AngelSix - modified by mitos[dash]kalandiel
+// </copyright>
+// <summary>
+//   Interaction logic for LoginPage.xaml
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Fasetto.Word
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+    public partial class LoginPage : BasePage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginPage"/> class.
+        /// </summary>
         public LoginPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            await this.SlideAndFadeInFromRight(0.3f);
+        }
+
+        private async void ButtonBase2_OnClick(object sender, RoutedEventArgs e)
+        {
+            await this.SlideAndFadeOutToLeft(0.3f);
         }
     }
 }
