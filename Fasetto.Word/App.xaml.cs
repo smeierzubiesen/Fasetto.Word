@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="App.xaml.cs" company="mitos[dash]kalandiel">
-//   
+//   2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
 //   Defines the App type.
