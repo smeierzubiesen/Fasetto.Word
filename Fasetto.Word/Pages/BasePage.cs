@@ -95,7 +95,7 @@ namespace Fasetto.Word
         }
 
         /// <summary>
-        /// Animate the PageLoad
+        /// Animate the PageUnload
         /// </summary>
         /// <returns>
         /// The <see cref="Task"/> result
