@@ -33,7 +33,6 @@ cache:
 before_build:
   appveyor-retry nuget restore
 after_build:
-  - cmd: dir
   - doxygen.exe "C:\projects\fasseto-word\Fasetto.Word.Doxyfile"
 assembly_info:
   patch: true
@@ -47,7 +46,7 @@ build:
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
     name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
-  - path: Fasetto.Word\html
+  - path: fasetto-word-docs\html
     name: fasetto-word-docs-${platform}
     type: zip
 deploy:
