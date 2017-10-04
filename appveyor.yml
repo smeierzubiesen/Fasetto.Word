@@ -33,7 +33,7 @@ cache:
 before_build:
   appveyor-retry nuget restore
 after_build:
-  - doxygen.exe "C:\projects\hmh\Fasetto.Word.Doxyfile"
+  - doxygen.exe "C:\projects\fasetto-word\Fasetto.Word.Doxyfile"
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
