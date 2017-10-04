@@ -8,9 +8,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Fasetto.Word")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Fasetto.Word by AngelSix (modded by SMzB)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("AngelSix")]
 [assembly: AssemblyProduct("Fasetto.Word")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
