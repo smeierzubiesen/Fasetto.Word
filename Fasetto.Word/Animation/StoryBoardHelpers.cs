@@ -19,7 +19,7 @@ namespace Fasetto.Word.Animation
     public static class StoryBoardHelpers
     {
         /// <summary>
-        /// Adds a slide effect to the <see cref="Storyboard"/>.
+        /// Adds a slide effect (from right) to the <see cref="Storyboard"/>.
         /// </summary>
         /// <param name="storyboard">
         /// The storyboard to add the animation to.
@@ -56,7 +56,7 @@ namespace Fasetto.Word.Animation
         }
 
         /// <summary>
-        /// Adds a slide effect to the <see cref="Storyboard"/>.
+        /// Adds a slide effect (from left) to the <see cref="Storyboard"/>.
         /// </summary>
         /// <param name="storyboard">
         /// The storyboard to add the animation to.
@@ -93,7 +93,7 @@ namespace Fasetto.Word.Animation
         }
 
         /// <summary>
-        /// Adds a slide effect to the <see cref="Storyboard"/>.
+        /// Adds a slide effect (to right) to the <see cref="Storyboard"/>.
         /// </summary>
         /// <param name="storyboard">
         /// The storyboard to add the animation to.
@@ -130,7 +130,7 @@ namespace Fasetto.Word.Animation
         }
 
         /// <summary>
-        /// Adds a slide effect to the <see cref="Storyboard"/>.
+        /// Adds a slide effect (to left) to the <see cref="Storyboard"/>.
         /// </summary>
         /// <param name="storyboard">
         /// The storyboard to add the animation to.
