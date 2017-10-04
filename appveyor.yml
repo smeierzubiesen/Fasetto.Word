@@ -24,8 +24,6 @@ matrix:
       configuration: Release
 install:
   - choco install doxygen.portable
-##  - appveyor-retry choco install cppcheck
-## TODO(smzb): We need to find a way to do c++ code analysis...
 cache:
  - C:\ProgramData\chocolatey\bin -> appveyor.yml
  - C:\ProgramData\chocolatey\lib -> appveyor.yml
@@ -42,7 +40,7 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   parallel: true
-  verbosity: normal
+  verbosity: minimal
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
     name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
