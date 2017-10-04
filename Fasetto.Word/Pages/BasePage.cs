@@ -1,13 +1,12 @@
-﻿/** \file BasePage.cs
- * \brief BasePage is being inherited from all other pages and contains some boilerplate code to allow for animations and such.
- * \details 1. Make sure you inherit BasePage (instead of Page) to get animations working
- * 2. Animations should just work
- * 
- *
- * \author Sebastian Meier zu Biesen
- * \date 04.10.2017
- * 
- */
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BasePage.cs" company="mitos[dash]kalandiel">
+//   2017 by AngelSix - modified by mitos[dash]kalandiel
+// </copyright>
+// <summary>
+//   BasePage for all pages to inherit from and gain basic function
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace Fasetto.Word
 {
     using System;
@@ -88,19 +87,30 @@ namespace Fasetto.Word
             switch (this.PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    var sb = new Storyboard();
-                    var slideAnimation = new ThicknessAnimation
-                    {
-                        Duration = new Duration(TimeSpan.FromSeconds(this.SlideSeconds)),
-                        From = new Thickness(this.WindowWidth, 0, -this.WindowWidth, 0),
-                        To = new Thickness(0),
-                        DecelerationRatio = 0.9f
-                    };
-                    Storyboard.SetTargetProperty(slideAnimation, new PropertyPath("Margin"));
-                    sb.Children.Add(slideAnimation);
-                    sb.Begin(this);
-                    this.Visibility = Visibility.Visible;
-                    await Task.Delay((int)this.SlideSeconds * 1000);
+                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Animate the PageLoad
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/> result
+        /// </returns>
+        public async Task AnimateOut()
+        {
+            if (this.PageLoadAnimation == PageAnimation.None)
+            {
+                return;
+            }
+
+            switch (this.PageUnloadAnimation)
+            {
+                case PageAnimation.SlideAndFadeOutToLeft:
+                    await this.SlideAndFadeOutToLeft(this.SlideSeconds);
                     break;
                 default:
                     break;

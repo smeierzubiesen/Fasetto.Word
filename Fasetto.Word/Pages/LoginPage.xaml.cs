@@ -10,6 +10,7 @@
 namespace Fasetto.Word
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
@@ -24,6 +25,16 @@ namespace Fasetto.Word
         public LoginPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            await this.SlideAndFadeInFromRight(0.3f);
+        }
+
+        private async void ButtonBase2_OnClick(object sender, RoutedEventArgs e)
+        {
+            await this.SlideAndFadeOutToLeft(0.3f);
         }
     }
 }

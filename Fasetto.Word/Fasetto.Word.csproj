@@ -131,6 +131,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animation\PageAnimation.cs" />
+    <Compile Include="Animation\PageAnimations.cs" />
+    <Compile Include="Animation\StoryBoardHelpers.cs" />
     <Compile Include="Attached Properties\BaseAttachedProperty.cs" />
     <Compile Include="Attached Properties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
