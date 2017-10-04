@@ -1,12 +1,12 @@
-﻿/*!
- * \file BasePage.cs
+﻿/** \file BasePage.cs
+ * \brief BasePage is being inherited from all other pages and contains some boilerplate code to allow for animations and such.
+ * \details 1. Make sure you inherit BasePage (instead of Page) to get animations working
+ * 2. Animations should just work
+ * 
  *
  * \author Sebastian Meier zu Biesen
- * \date
- *
- * BasePage is being inherited from all other pages and contains some boilerplate code to allow for animations and such.
- * 1. Make sure you inherit BasePage (instead of Page) to get animations working
- * 2. Animations should just work
+ * \date 04.10.2017
+ * 
  */
 namespace Fasetto.Word
 {
