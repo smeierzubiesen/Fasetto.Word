@@ -1,4 +1,21 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+﻿/*! \mainpage Fasetto.Word Documentation
+ *
+ * \section intro_sec Introduction
+ *
+ * Fasetto.Word is an ongoing project to learn C# and WPF/XAML
+ *
+ * \section install_sec Installation
+ *
+ * \subsection step1 Step 1: Unzip
+ *  
+ * Unzip the file anywhere
+ * 
+ * \subsection step2 Step 2: Execute
+ * 
+ * Simply doubleclick the .exe file and it will run
+ */
+
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="App.xaml.cs" company="mitos[dash]kalandiel">
 //   2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
@@ -6,7 +23,6 @@
 //   Defines the App type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Fasetto.Word
 {
     using System.Windows;
