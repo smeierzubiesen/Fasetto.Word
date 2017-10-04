@@ -1,7 +1,11 @@
 ﻿version: 0.1.{build}-{branch}
+environment:
+  BUILD_NUMBER: $(APPVEYOR_BUILD_NUMBER)
+  APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=9
 skip_tags: true
 pull_requests:
   do_not_increment_build_number: true
+skip_branch_with_pr: true
 image: Visual Studio 2017
 configuration: Release
 platform:
@@ -18,8 +22,18 @@ matrix:
       configuration: Release
     - platform: x64
       configuration: Release
+install:
+  - choco install doxygen.portable
+##  - appveyor-retry choco install cppcheck
+## TODO(smzb): We need to find a way to do c++ code analysis...
+cache:
+ - C:\ProgramData\chocolatey\bin -> appveyor.yml
+ - C:\ProgramData\chocolatey\lib -> appveyor.yml
+ - packages -> **\packages.config
 before_build:
   appveyor-retry nuget restore
+after_build:
+  - doxygen.exe "C:\projects\fasseto-word\Fasetto.Word.Doxyfile"
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -28,7 +42,21 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   parallel: true
-  verbosity: minimal
+  verbosity: normal
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
-    name: Fasetto.Word-$(appveyor_build_version)-$(platform)
+    name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
+  - path: fasetto-word-docs\html
+    name: fasetto-word-docs-${platform}
+    type: zip
+deploy:
+- provider: GitHub
+  release: Fasetto.Word-v$(appveyor_build_version)-$(platform)
+  description: Fasetto.Word Version $(appveyor_build_version)  for $(platform)
+  auth_token:
+    secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
+  draft: false
+  prerelease: true
+  force_update: true
+  on:
+    branch: master
