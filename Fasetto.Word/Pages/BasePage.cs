@@ -1,4 +1,14 @@
-﻿namespace Fasetto.Word
+﻿/*!
+ * \file BasePage.cs
+ *
+ * \author Sebastian Meier zu Biesen
+ * \date
+ *
+ * BasePage is being inherited from all other pages and contains some boilerplate code to allow for animations and such.
+ * 1. Make sure you inherit BasePage (instead of Page) to get animations working
+ * 2. Animations should just work
+ */
+namespace Fasetto.Word
 {
     using System;
     using System.Threading.Tasks;
