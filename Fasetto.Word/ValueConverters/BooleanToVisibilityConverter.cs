@@ -19,6 +19,8 @@ namespace Fasetto.Word
     /// </summary>
     public class BooleanToVisibilityConverter : BaseValueConverter<BooleanToVisibilityConverter>
     {
+        #region Public Methods
+
         /// <inheritdoc />
         /// <summary>
         /// Convert false to hidden and true to visible
@@ -32,7 +34,16 @@ namespace Fasetto.Word
         /// </returns>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null && (bool)value ? Visibility.Hidden : Visibility.Visible;
+            // In case we don't pass a parameter (like we do with the Animation objects) we define true as hidden
+            // whereas with all other cases where we pass a parameter we do the opposite
+            if (parameter == null)
+            {
+                return value != null && (bool)value ? Visibility.Hidden : Visibility.Visible;
+            }
+            else
+            {
+                return value != null && (bool)value ? Visibility.Visible : Visibility.Hidden;
+            }
         }
 
         /// <inheritdoc />
@@ -51,5 +62,7 @@ namespace Fasetto.Word
         {
             throw new NotImplementedException();
         }
+
+        #endregion Public Methods
     }
 }

@@ -5,7 +5,9 @@
     /// </summary>
     public enum ApplicationPage
     {
-        // Ther login page
+        /// <summary>
+        /// Login Page
+        /// </summary>
         Login = 0
     }
 }

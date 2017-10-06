@@ -7,6 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.ComponentModel;
+using System.Security;
+
 namespace Fasetto.Word
 {
     using System.Diagnostics.CodeAnalysis;
@@ -16,9 +19,10 @@ namespace Fasetto.Word
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-    public partial class LoginPage : BasePage
+    public partial class LoginPage : BasePage<LoginViewModel>, IHavePassword
     {
+        #region Public Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage"/> class.
         /// </summary>
@@ -27,14 +31,17 @@ namespace Fasetto.Word
             this.InitializeComponent();
         }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            await this.SlideAndFadeInFromRight(0.3f);
-        }
+        #endregion Public Constructors
 
-        private async void ButtonBase2_OnClick(object sender, RoutedEventArgs e)
-        {
-            await this.SlideAndFadeOutToLeft(0.3f);
-        }
+
+
+        #region Public Properties
+
+        /// <summary>
+        /// The secure password for this login page
+        /// </summary>
+        public SecureString SecurePassword => PasswordText.SecurePassword;
+
+        #endregion Public Properties
     }
 }

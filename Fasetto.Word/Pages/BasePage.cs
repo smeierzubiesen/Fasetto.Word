@@ -9,16 +9,17 @@
 
 namespace Fasetto.Word
 {
-    using System;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media.Animation;
 
     /// <summary>
     /// BasePage for all pages to inherit from and gain basic function
     /// </summary>
-    public class BasePage : Page
+    /// <typeparam name="VM">The _ViewModel Type</typeparam>
+    public class BasePage<VM> : Page
+        where VM : BaseViewModel, new()
+
     {
         #region Constructor
 
@@ -36,17 +37,17 @@ namespace Fasetto.Word
 
             // Listen for the PageLoad event and hook into it.
             this.Loaded += this.BasePageLoaded;
+
+            // Create a default view model
+            this.ViewModel = new VM();
         }
 
-        #endregion
+        #endregion Constructor
+
+
 
         #region Public Properties
-        
-        /// <summary>
-        /// Gets or sets how long the slide animation lasts
-        /// </summary>
-        public float SlideSeconds { get; set; } = 0.8f;
-        
+
         /// <summary>
         /// Gets or sets the page load animation.
         /// </summary>
@@ -57,7 +58,35 @@ namespace Fasetto.Word
         /// </summary>
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
 
-        #endregion
+        /// <summary>
+        /// Gets or sets how long the slide animation lasts
+        /// </summary>
+        public float SlideSeconds { get; set; } = 0.8f;
+
+        /// <summary>
+        /// Gets or sets the view model for this page.
+        /// </summary>
+        public VM ViewModel
+        {
+            get => this._ViewModel;
+
+            set
+            {
+                // if nothing has changed simply return
+                if (this._ViewModel == value)
+                {
+                    return;
+                }
+
+                // Update the _ViewModel
+                this._ViewModel = value;
+
+                // Update the DataContext
+                this.DataContext = this._ViewModel;
+            }
+        }
+
+        #endregion Public Properties
 
         #region Animation Load / Unload
 
@@ -89,6 +118,7 @@ namespace Fasetto.Word
                 case PageAnimation.SlideAndFadeInFromRight:
                     await this.SlideAndFadeInFromRight(this.SlideSeconds);
                     break;
+
                 default:
                     break;
             }
@@ -112,12 +142,21 @@ namespace Fasetto.Word
                 case PageAnimation.SlideAndFadeOutToLeft:
                     await this.SlideAndFadeOutToLeft(this.SlideSeconds);
                     break;
+
                 default:
                     break;
             }
         }
 
-        #endregion
+        #endregion Animation Load / Unload
 
+        #region Private members
+
+        /// <summary>
+        /// The _ViewModel associated with this page
+        /// </summary>
+        private VM _ViewModel { get; set; }
+
+        #endregion Private members
     }
 }

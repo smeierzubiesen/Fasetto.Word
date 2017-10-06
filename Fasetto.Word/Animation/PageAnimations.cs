@@ -5,8 +5,6 @@
     using System.Windows.Controls;
     using System.Windows.Media.Animation;
 
-    using Fasetto.Word.Animation;
-
     /// <summary>
     /// Helpers to animate pages in specific ways
     /// </summary>
