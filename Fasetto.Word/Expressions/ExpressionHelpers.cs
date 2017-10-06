@@ -1,8 +1,8 @@
 ﻿namespace Fasetto.Word
 {
     using System;
-    using System.Reflection;
     using System.Linq.Expressions;
+    using System.Reflection;
 
     /// <summary>
     /// A helper for expressions
@@ -23,8 +23,8 @@
         }
 
         /// <summary>
-        /// Sets the underlying property's value to the given value
-        /// from an expression that contains the property
+        /// Sets the underlying property's value to the given value from an expression that contains
+        /// the property
         /// </summary>
         /// <typeparam name="T">The <see cref="Type"/> of value to set</typeparam>
         /// <param name="lambda">The expression</param>

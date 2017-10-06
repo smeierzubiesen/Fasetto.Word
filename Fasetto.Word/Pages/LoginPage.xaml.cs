@@ -1,21 +1,16 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="LoginPage.xaml.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
+//     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-//   Interaction logic for LoginPage.xaml
+// Interaction logic for LoginPage.xaml
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.ComponentModel;
 using System.Security;
 
 namespace Fasetto.Word
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Windows;
-    using System.Windows.Controls;
-
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>

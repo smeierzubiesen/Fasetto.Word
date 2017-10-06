@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="BaseValueConverter.cs" company="">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
+//     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-//   A base value converter that allows direct XAML usage
+// A base value converter that allows direct XAML usage
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ namespace Fasetto.Word
         /// </summary>
         private static T converter = null;
 
-        #endregion
+        #endregion Private members
 
         #region Markup Extension Methods
 
@@ -39,11 +39,11 @@ namespace Fasetto.Word
         /// <returns>A static instance of the converter</returns>
         public override object ProvideValue(IServiceProvider serviceProvider) => converter ?? (converter = new T());
 
-        #endregion
+        #endregion Markup Extension Methods
 
         #region Value Converter Methods
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
         /// The method to convert one type to another
         /// </summary>
@@ -54,7 +54,7 @@ namespace Fasetto.Word
         /// <returns></returns>
         public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
         /// The method to convert a value back to its origin type
         /// </summary>
@@ -65,6 +65,6 @@ namespace Fasetto.Word
         /// <returns></returns>
         public abstract object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
 
-        #endregion
+        #endregion Value Converter Methods
     }
 }

@@ -37,9 +37,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="WindowViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandle">
-        /// The windowHandle.
-        /// </param>
+        /// <param name="windowHandle">The windowHandle.</param>
         public WindowViewModel(Window windowHandle)
         {
             this.windowHandle = windowHandle;
@@ -130,7 +128,8 @@
         public int ResizeBorder => this.Borderless ? 0 : 6;
 
         /// <summary>
-        /// Gets or sets the size of the resize border around the windowHandle, taking into account the outer margin
+        /// Gets or sets the size of the resize border around the windowHandle, taking into account
+        /// the outer margin
         /// </summary>
         public Thickness ResizeBorderThickness => new Thickness(this.ResizeBorder + this.OuterMarginSize);
 
@@ -155,7 +154,7 @@
         public int WindowMinimumHeight { get; set; } = 500;
 
         /// <summary>
-        /// Gets or sets the minimum  width the windowHandle can be
+        /// Gets or sets the minimum width the windowHandle can be
         /// </summary>
         public int WindowMinimumWidth { get; set; } = 800;
 

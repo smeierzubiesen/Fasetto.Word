@@ -4,14 +4,14 @@
              xmlns:local="clr-namespace:Fasetto.Word"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         <ResourceDictionary>
-             <ResourceDictionary.MergedDictionaries>
-                 <ResourceDictionary Source="Resources/Styles/Colours.xaml" />
-                 <ResourceDictionary Source="Resources/Styles/Fonts.xaml" />
-                 <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
-                 <ResourceDictionary Source="Resources/Styles/Texts.xaml" />
-                 <ResourceDictionary Source="Resources/Styles/Windows.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colours.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Texts.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Windows.xaml" />
             </ResourceDictionary.MergedDictionaries>
-         </ResourceDictionary>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

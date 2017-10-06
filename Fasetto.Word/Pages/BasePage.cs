@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="BasePage.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
+//     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-//   BasePage for all pages to inherit from and gain basic function
+// BasePage for all pages to inherit from and gain basic function
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,6 +13,7 @@ namespace Fasetto.Word
     using System.Windows;
     using System.Windows.Controls;
 
+    /// <inheritdoc/>
     /// <summary>
     /// BasePage for all pages to inherit from and gain basic function
     /// </summary>
@@ -23,9 +24,9 @@ namespace Fasetto.Word
     {
         #region Constructor
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Fasetto.Word.BasePage" /> class.
+        /// Initializes a new instance of the <see cref="T:Fasetto.Word.BasePage"/> class.
         /// </summary>
         public BasePage()
         {
@@ -103,9 +104,7 @@ namespace Fasetto.Word
         /// <summary>
         /// Animate the PageLoad
         /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/> result
-        /// </returns>
+        /// <returns>The <see cref="Task"/> result</returns>
         public async Task AnimateIn()
         {
             if (this.PageLoadAnimation == PageAnimation.None)
@@ -127,9 +126,7 @@ namespace Fasetto.Word
         /// <summary>
         /// Animate the PageUnload
         /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/> result
-        /// </returns>
+        /// <returns>The <see cref="Task"/> result</returns>
         public async Task AnimateOut()
         {
             if (this.PageLoadAnimation == PageAnimation.None)

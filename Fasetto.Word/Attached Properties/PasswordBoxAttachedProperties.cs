@@ -3,9 +3,9 @@
     using System.Windows;
     using System.Windows.Controls;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
-    /// The HasText attached property for a <see cref="T:System.Windows.Controls.PasswordBox" />
+    /// The HasText attached property for a <see cref="T:System.Windows.Controls.PasswordBox"/>
     /// </summary>
     public class HasTextProperty : BaseAttachedProperty<HasTextProperty, bool>
     {
@@ -23,7 +23,7 @@
         #endregion Public Methods
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// The MonitorPassword attached property for a <see cref="PasswordBox"/>
     /// </summary>
@@ -34,9 +34,7 @@
         /// <summary>
         /// Fire when the <see cref="PasswordBox"/> value changes
         /// </summary>
-        /// <param name="sender">
-        /// The attached <see cref="PasswordBox"/>
-        /// </param>
+        /// <param name="sender">The attached <see cref="PasswordBox"/></param>
         /// <param name="e">The event arguments</param>
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -47,7 +45,8 @@
         #endregion Private Methods
 
         /// <summary>
-        /// Override the OnValueChanged base function to check if the <see cref="PasswordBox"/> text has changed
+        /// Override the OnValueChanged base function to check if the <see cref="PasswordBox"/> text
+        /// has changed
         /// </summary>
         /// <param name="sender">The PasswordBox to check</param>
         /// <param name="e">The event arguments</param>

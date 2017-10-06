@@ -7,27 +7,27 @@
  * \section install_sec Installation
  *
  * \subsection step1 Step 1: Unzip
- *  
+ *
  * Unzip the file anywhere
- * 
+ *
  * \subsection step2 Step 2: Execute
- * 
+ *
  * Simply doubleclick the .exe file and it will run
  */
 
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file="App.xaml.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
+//     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-//   Defines the App type.
+// Defines the App type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace Fasetto.Word
 {
     using System.Windows;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

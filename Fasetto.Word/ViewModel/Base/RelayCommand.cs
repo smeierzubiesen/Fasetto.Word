@@ -3,22 +3,25 @@ using System.Windows.Input;
 
 namespace Fasetto.Word
 {
-    class RelayCommand : ICommand
+    internal class RelayCommand : ICommand
     {
         #region private members
 
         private Action _mAction;
 
-        #endregion
+        #endregion private members
 
         #region Default constructor
+
         public RelayCommand(Action action)
         {
             _mAction = action;
         }
-        #endregion
+
+        #endregion Default constructor
 
         #region Command Methods
+
         /// <summary>
         /// A relay command can always execute
         /// </summary>
@@ -30,13 +33,18 @@ namespace Fasetto.Word
         {
             _mAction();
         }
-        #endregion
+
+        #endregion Command Methods
+
+
 
         #region Public Events
+
         /// <summary>
         /// The event thats fired when the <see cref="CanExecute(object)"/> value has changed.
         /// </summary>
-        public event EventHandler CanExecuteChanged = (sender,e) => { };
-        #endregion
+        public event EventHandler CanExecuteChanged = (sender, e) => { };
+
+        #endregion Public Events
     }
 }

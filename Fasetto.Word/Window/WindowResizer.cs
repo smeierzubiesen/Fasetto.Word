@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -244,8 +243,7 @@ namespace Fasetto.Word
         #region Private Methods
 
         /// <summary>
-        /// Get the min/max window size for this window
-        /// Correctly accounting for the taskbar size and position
+        /// Get the min/max window size for this window Correctly accounting for the taskbar size and position
         /// </summary>
         /// <param name="hwnd"></param>
         /// <param name="lParam"></param>
@@ -311,7 +309,7 @@ namespace Fasetto.Word
 
     #region Dll Helper Structures
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     internal enum MonitorOptions : uint
     {
         MONITOR_DEFAULTTONULL = 0x00000000,
@@ -319,7 +317,7 @@ namespace Fasetto.Word
         MONITOR_DEFAULTTONEAREST = 0x00000002
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// Information about maximum and minimum window sizes
     /// </summary>
@@ -352,7 +350,7 @@ namespace Fasetto.Word
         public POINT ptMaxTrackSize;
     };
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT
     {
@@ -376,7 +374,7 @@ namespace Fasetto.Word
         }
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     [StructLayout(LayoutKind.Sequential)]
     public struct Rectangle
     {

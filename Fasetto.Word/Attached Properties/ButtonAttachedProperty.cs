@@ -1,9 +1,6 @@
 ﻿namespace Fasetto.Word
 {
-    using System.Windows;
-    using System.Windows.Controls;
-
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// The IsBusy attached property for anything that flags whether the <see cref="Control"/> is busy
     /// </summary>

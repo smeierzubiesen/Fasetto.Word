@@ -1,6 +1,5 @@
 ﻿namespace Fasetto.Word
 {
-    using System.Security;
     using System.Threading.Tasks;
     using System.Windows.Input;
 
@@ -44,9 +43,7 @@
         /// Attempts to log the user in.
         /// </summary>
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view.</param>
-        /// <returns>
-        /// The result of the login attempt<see cref="Task"/>.
-        /// </returns>
+        /// <returns>The result of the login attempt <see cref="Task"/>.</returns>
         public async Task Login(object parameter)
         {
             await RunCommand(() => this.LoginIsRunning, async () =>

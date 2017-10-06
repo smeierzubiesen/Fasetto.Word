@@ -12,7 +12,6 @@
         <ControlTemplate TargetType="UserControl">
             <!--  Sidebar  -->
             <Border Grid.Column="0" Background="{StaticResource BackgroundVeryLightBrush}">
-
                 <!--  Content  -->
                 <Grid>
                     <Grid.RowDefinitions>
