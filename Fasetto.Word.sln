@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fasetto.Word", "Fasetto.Word\Fasetto.Word.csproj", "{7504B727-C966-497A-9DFC-A08649262A94}"
 EndProject
@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		Fasetto.Word.Doxyfile = Fasetto.Word.Doxyfile
 	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Fasetto.Word.Install", "Fasetto.Word.Install\Fasetto.Word.Install.vdproj", "{CB83347B-47F0-492D-8EE6-60C00E65A702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,12 @@ Global
 		{7504B727-C966-497A-9DFC-A08649262A94}.Release|x64.Build.0 = Release|x64
 		{7504B727-C966-497A-9DFC-A08649262A94}.Release|x86.ActiveCfg = Release|x86
 		{7504B727-C966-497A-9DFC-A08649262A94}.Release|x86.Build.0 = Release|x86
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Debug|Any CPU.ActiveCfg = Debug
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Debug|x64.ActiveCfg = Debug
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Debug|x86.ActiveCfg = Debug
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Release|Any CPU.ActiveCfg = Release
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Release|x64.ActiveCfg = Release
+		{CB83347B-47F0-492D-8EE6-60C00E65A702}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
