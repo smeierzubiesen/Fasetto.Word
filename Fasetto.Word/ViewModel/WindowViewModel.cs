@@ -8,14 +8,7 @@
     /// </summary>
     internal class WindowViewModel : BaseViewModel
     {
-
-
         #region private members
-
-        /// <summary>
-        /// The windows this ViewModel controls
-        /// </summary>
-        private Window windowHandle;
 
         /// <summary>
         /// The margin around the windowHandle to allow for a drop shadow
@@ -23,25 +16,28 @@
         private int outerMarginSize = 10;
 
         /// <summary>
-        /// the radius of the edge around the windowHandle
-        /// </summary>
-        private int windowRadius = 10;
-
-        /// <summary>
         /// The last known dock position
         /// </summary>
         private WindowDockPosition windowDockPosition = WindowDockPosition.Undocked;
 
-        #endregion
+        /// <summary>
+        /// The windows this ViewModel controls
+        /// </summary>
+        private Window windowHandle;
+
+        /// <summary>
+        /// the radius of the edge around the windowHandle
+        /// </summary>
+        private int windowRadius = 10;
+
+        #endregion private members
 
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WindowViewModel"/> class. 
+        /// Initializes a new instance of the <see cref="WindowViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandle">
-        /// The windowHandle.
-        /// </param>
+        /// <param name="windowHandle">The windowHandle.</param>
         public WindowViewModel(Window windowHandle)
         {
             this.windowHandle = windowHandle;
@@ -67,19 +63,9 @@
             var resizer = new WindowResizer(this.windowHandle);
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Commands
-
-        /// <summary>
-        /// Gets or sets the command to minimize the windowHandle
-        /// </summary>
-        public ICommand MinimizeCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command to maximize the windowHandle
-        /// </summary>
-        public ICommand MaximizeCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the command to close the windowHandle
@@ -87,19 +73,25 @@
         public ICommand CloseCommand { get; set; }
 
         /// <summary>
+        /// Gets or sets the command to maximize the windowHandle
+        /// </summary>
+        public ICommand MaximizeCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command to minimize the windowHandle
+        /// </summary>
+        public ICommand MinimizeCommand { get; set; }
+
+        /// <summary>
         /// Gets or sets the command to show the System Menu
         /// </summary>
         public ICommand SystemMenuCommand { get; set; }
 
-        #endregion
+        #endregion Commands
+
+
 
         #region Public Properties
-
-        /// <summary>
-        /// Gets or sets the padding of the main windowHandle content
-        /// </summary>
-        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
-
 
         /// <summary>
         /// Gets or sets true if the windowHandle should be borderless because its docked/maximized
@@ -107,14 +99,14 @@
         public bool Borderless => this.windowHandle.WindowState == WindowState.Maximized || this.windowDockPosition != WindowDockPosition.Undocked;
 
         /// <summary>
-        /// The size of the resize border around the windowHandle
+        /// Gets or sets the current page of the App
         /// </summary>
-        public int ResizeBorder => this.Borderless ? 0 : 6;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
 
         /// <summary>
-        /// Gets or sets the size of the resize border around the windowHandle, taking into account the outer margin
+        /// Gets or sets the padding of the main windowHandle content
         /// </summary>
-        public Thickness ResizeBorderThickness => new Thickness(this.ResizeBorder + this.OuterMarginSize);
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
         /// <summary>
         /// Gets or sets the margin around the windowHandle to allow for a drop shadow
@@ -131,18 +123,15 @@
         public Thickness OuterMarginSizeThickness => new Thickness(this.OuterMarginSize);
 
         /// <summary>
-        /// Gets or sets the radius of the edge around the windowHandle
+        /// The size of the resize border around the windowHandle
         /// </summary>
-        public int WindowRadius
-        {
-            get => this.Borderless ? 0 : this.windowRadius;
-            set => this.windowRadius = value;
-        }
+        public int ResizeBorder => this.Borderless ? 0 : 6;
 
         /// <summary>
-        /// Gets or sets the Radius of the corner edge of the windowHandle
+        /// Gets or sets the size of the resize border around the windowHandle, taking into account
+        /// the outer margin
         /// </summary>
-        public CornerRadius WindowCornerRadius => new CornerRadius(this.WindowRadius);
+        public Thickness ResizeBorderThickness => new Thickness(this.ResizeBorder + this.OuterMarginSize);
 
         /// <summary>
         /// Gets or sets the height of the title bar
@@ -155,21 +144,30 @@
         public GridLength TitleHeightGridLength => new GridLength(this.TitleHeight + this.ResizeBorder);
 
         /// <summary>
-        /// Gets or sets the minimum  width the windowHandle can be
+        /// Gets or sets the Radius of the corner edge of the windowHandle
         /// </summary>
-        public int WindowMinimumWidth { get; set; } = 400;
+        public CornerRadius WindowCornerRadius => new CornerRadius(this.WindowRadius);
 
         /// <summary>
         /// Gets or sets the minimum height the windowHandle can be
         /// </summary>
-        public int WindowMinimumHeight { get; set; } = 400;
+        public int WindowMinimumHeight { get; set; } = 500;
 
         /// <summary>
-        /// Gets or sets the current page of the App
+        /// Gets or sets the minimum width the windowHandle can be
         /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        public int WindowMinimumWidth { get; set; } = 800;
 
-        #endregion
+        /// <summary>
+        /// Gets or sets the radius of the edge around the windowHandle
+        /// </summary>
+        public int WindowRadius
+        {
+            get => this.Borderless ? 0 : this.windowRadius;
+            set => this.windowRadius = value;
+        }
+
+        #endregion Public Properties
 
         #region Private helper functions
 
@@ -184,7 +182,6 @@
             return new Point(position.X + window.Left, position.Y + window.Top);
         }
 
-        #endregion
-
+        #endregion Private helper functions
     }
 }

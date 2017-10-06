@@ -3,7 +3,7 @@
     using System;
     using System.Windows.Input;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public class RelayParameterizedCommand : ICommand
     {
         #region private members
@@ -13,23 +13,23 @@
         /// </summary>
         private Action<object> Action;
 
-        #endregion
+        #endregion private members
 
         #region Default constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RelayParameterizedCommand"/> class.
         /// </summary>
-        /// <param name="action">
-        /// TODO The action.
-        /// </param>
+        /// <param name="action">TODO The action.</param>
         public RelayParameterizedCommand(Action<object> action)
         {
             this.Action = action;
         }
-        #endregion
+
+        #endregion Default constructor
 
         #region Command Methods
+
         /// <summary>
         /// A relay command can always execute
         /// </summary>
@@ -45,13 +45,18 @@
         {
             this.Action(parameter);
         }
-        #endregion
+
+        #endregion Command Methods
+
+
 
         #region Public Events
+
         /// <summary>
         /// The event that's fired when the <see cref="CanExecute(object)"/> value has changed.
         /// </summary>
-        public event EventHandler CanExecuteChanged = (sender,e) => { };
-        #endregion
+        public event EventHandler CanExecuteChanged = (sender, e) => { };
+
+        #endregion Public Events
     }
 }

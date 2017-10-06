@@ -27,6 +27,9 @@
                     case ApplicationPage.Login:
                         return new LoginPage();
 
+                    case ApplicationPage.Chat:
+                        return new ChatPage();
+
                     default:
                         Debugger.Break();
                         return null;
@@ -45,7 +48,9 @@
         /// <param name="parameter">Any parameter passed through</param>
         /// <param name="culture">The language <see cref="CultureInfo"/>.</param>
         /// <returns>An <see cref="ApplicationPage"/> value.</returns>
-        /// <exception cref="NotImplementedException">We don't need this function, thus its not implemented.</exception>
+        /// <exception cref="NotImplementedException">
+        /// We don't need this function, thus its not implemented.
+        /// </exception>
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="BaseViewModel.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
+//     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-//   A base view model that fires PropertyChanged as required
+// A base view model that fires PropertyChanged as required
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -47,12 +47,14 @@ namespace Fasetto.Word
         #region Command Helper
 
         /// <summary>
-        /// Runs a command if the updating flag is not set.
-        /// If the flag is true (indicating the function is already running) then the <see cref="Action"/> wont be triggered.
-        /// If the flag is false (indicating no running function) then the <see cref="Action"/> is triggered and run.
-        /// Once the <see cref="Action"/> is finished, if it was run, then the flag is reset to false.
+        /// Runs a command if the updating flag is not set. If the flag is true (indicating the
+        /// function is already running) then the <see cref="Action"/> wont be triggered. If the flag
+        /// is false (indicating no running function) then the <see cref="Action"/> is triggered and
+        /// run. Once the <see cref="Action"/> is finished, if it was run, then the flag is reset to false.
         /// </summary>
-        /// <param name="updatingFlag">The <see cref="bool"/> property flag defining if the command is already running.</param>
+        /// <param name="updatingFlag">
+        /// The <see cref="bool"/> property flag defining if the command is already running.
+        /// </param>
         /// <param name="action">the <see cref="Action"/> to trigger in case the flag is false.</param>
         /// <returns>The <see cref="Task"/> status</returns>
         protected async Task RunCommand(Expression<Func<bool>> updatingFlag, Func<Task> action)
