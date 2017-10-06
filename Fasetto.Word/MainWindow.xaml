@@ -11,8 +11,6 @@
     Height="600"
     MinWidth="{Binding WindowMinimumWidth}"
     MinHeight="{Binding WindowMinimumHeight}"
-    d:DataContext="{d:DesignInstance local:WindowViewModel,
-                                     IsDesignTimeCreatable=True}"
     AllowsTransparency="True"
     Icon="Resources/Logo/AppIcon.ico"
     WindowStartupLocation="CenterScreen"
