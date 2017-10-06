@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Fasetto.Word.Animation
+namespace Fasetto.Word
 {
     using System;
     using System.Windows;

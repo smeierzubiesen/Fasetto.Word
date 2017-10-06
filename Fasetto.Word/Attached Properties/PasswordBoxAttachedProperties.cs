@@ -1,17 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="PasswordBoxAttachedProperties.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
-// </copyright>
-// <summary>
-//   Defines the PasswordBoxAttachedProperties type.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-// ReSharper disable StyleCop.SA1402
-
-namespace Fasetto.Word
+﻿namespace Fasetto.Word
 {
-    using System;
-    using System.Globalization;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -21,14 +9,18 @@ namespace Fasetto.Word
     /// </summary>
     public class HasTextProperty : BaseAttachedProperty<HasTextProperty, bool>
     {
+        #region Public Methods
+
         /// <summary>
         /// Set the HasText property based on if the caller <see cref="PasswordBox"/> has any text
         /// </summary>
-        /// <param name="sender">TODO The sender.</param>
+        /// <param name="sender">The passsword box that we are monitoring</param>
         public static void SetValue(DependencyObject sender)
         {
             SetValue(sender, ((PasswordBox)sender).SecurePassword.Length > 0);
         }
+
+        #endregion Public Methods
     }
 
     /// <inheritdoc />
@@ -37,6 +29,23 @@ namespace Fasetto.Word
     /// </summary>
     public class MonitorPasswordProperty : BaseAttachedProperty<MonitorPasswordProperty, bool>
     {
+        #region Private Methods
+
+        /// <summary>
+        /// Fire when the <see cref="PasswordBox"/> value changes
+        /// </summary>
+        /// <param name="sender">
+        /// The attached <see cref="PasswordBox"/>
+        /// </param>
+        /// <param name="e">The event arguments</param>
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            // Set the attached HasText value
+            HasTextProperty.SetValue((PasswordBox)sender);
+        }
+
+        #endregion Private Methods
+
         /// <summary>
         /// Override the OnValueChanged base function to check if the <see cref="PasswordBox"/> text has changed
         /// </summary>
@@ -65,19 +74,6 @@ namespace Fasetto.Word
                 // Start listening for password changes
                 passwordBox.PasswordChanged += this.PasswordBox_PasswordChanged;
             }
-        }
-
-        /// <summary>
-        /// Fire when the <see cref="PasswordBox"/> value changes
-        /// </summary>
-        /// <param name="sender">
-        /// The attached <see cref="PasswordBox"/>
-        /// </param>
-        /// <param name="e">The event arguments</param>
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            // Set the attached HasText value
-            HasTextProperty.SetValue((PasswordBox)sender);
         }
     }
 }

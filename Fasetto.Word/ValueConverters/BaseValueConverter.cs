@@ -1,10 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Windows.Data;
-using System.Windows.Markup;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BaseValueConverter.cs" company="">
+//   2017 by AngelSix - modified by mitos[dash]kalandiel
+// </copyright>
+// <summary>
+//   A base value converter that allows direct XAML usage
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Fasetto.Word
 {
+    using System;
+    using System.Globalization;
+    using System.Windows.Data;
+    using System.Windows.Markup;
+
     /// <summary>
     /// A base value converter that allows direct XAML usage
     /// </summary>
@@ -17,7 +26,7 @@ namespace Fasetto.Word
         /// <summary>
         /// A single static instance of the converter
         /// </summary>
-        private static T _converter = null;
+        private static T converter = null;
 
         #endregion
 
@@ -28,7 +37,7 @@ namespace Fasetto.Word
         /// </summary>
         /// <param name="serviceProvider">The service provider</param>
         /// <returns>A static instance of the converter</returns>
-        public override Object ProvideValue(IServiceProvider serviceProvider) => _converter ?? (_converter = new T());
+        public override object ProvideValue(IServiceProvider serviceProvider) => converter ?? (converter = new T());
 
         #endregion
 

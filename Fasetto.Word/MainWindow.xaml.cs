@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="mitos[dash]kalandiel">
-//   2017 by AngelSix - modified by mitos[dash]kalandiel
-// </copyright>
-// <summary>
-//   Interaction logic for MainWindow.xaml
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Fasetto.Word
+﻿namespace Fasetto.Word
 {
     using System.Windows;
 
@@ -16,10 +7,17 @@ namespace Fasetto.Word
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// The <see cref="MainWindow"/> Constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new WindowViewModel(this);
         }
+
+        #endregion Public Constructors
     }
 }

@@ -16,10 +16,12 @@ namespace Fasetto.Word
         /// Not docked
         /// </summary>
         Undocked,
+
         /// <summary>
         /// Docked to the left of the screen
         /// </summary>
         Left,
+
         /// <summary>
         /// Docked to the right of the screen
         /// </summary>
@@ -34,24 +36,14 @@ namespace Fasetto.Word
         #region Private Members
 
         /// <summary>
-        /// The window to handle the resizing for
-        /// </summary>
-        private Window mWindow;
-
-        /// <summary>
-        /// The last calculated available screen size
-        /// </summary>
-        private Rect mScreenSize = new Rect();
-
-        /// <summary>
         /// How close to the edge the window has to be to be detected as at the edge of the screen
         /// </summary>
         private int mEdgeTolerance = 2;
 
         /// <summary>
-        /// The transform matrix used to convert WPF sizes to screen pixels
+        /// The last known dock position
         /// </summary>
-        private Matrix mTransformToDevice;
+        private WindowDockPosition mLastDock = WindowDockPosition.Undocked;
 
         /// <summary>
         /// The last screen the window was on
@@ -59,25 +51,37 @@ namespace Fasetto.Word
         private IntPtr mLastScreen;
 
         /// <summary>
-        /// The last known dock position
+        /// The last calculated available screen size
         /// </summary>
-        private WindowDockPosition mLastDock = WindowDockPosition.Undocked;
+        private Rect mScreenSize = new Rect();
 
-        #endregion
+        /// <summary>
+        /// The transform matrix used to convert WPF sizes to screen pixels
+        /// </summary>
+        private Matrix mTransformToDevice;
+
+        /// <summary>
+        /// The window to handle the resizing for
+        /// </summary>
+        private Window mWindow;
+
+        #endregion Private Members
 
         #region Dll Imports
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool GetCursorPos(out POINT lpPoint);
+        private static extern bool GetCursorPos(out POINT lpPoint);
 
         [DllImport("user32.dll")]
-        static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
+        private static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
 
         [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
+        private static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
 
-        #endregion
+        #endregion Dll Imports
+
+
 
         #region Public Events
 
@@ -86,7 +90,7 @@ namespace Fasetto.Word
         /// </summary>
         public event Action<WindowDockPosition> WindowDockChanged = (dock) => { };
 
-        #endregion
+        #endregion Public Events
 
         #region Constructor
 
@@ -94,9 +98,9 @@ namespace Fasetto.Word
         /// Default constructor
         /// </summary>
         /// <param name="window">The window to monitor and correctly maximize</param>
-        /// <param name="adjustSize">The callback for the host to adjust the maximum available size if needed</param>
         public WindowResizer(Window window)
         {
+            // The Window Handle
             mWindow = window;
 
             // Create transform visual (for converting WPF size to pixel size)
@@ -109,7 +113,7 @@ namespace Fasetto.Word
             mWindow.SizeChanged += Window_SizeChanged;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Initialize
 
@@ -151,7 +155,7 @@ namespace Fasetto.Word
             handleSource.AddHook(WindowProc);
         }
 
-        #endregion
+        #endregion Initialize
 
         #region Edge Docking
 
@@ -206,7 +210,7 @@ namespace Fasetto.Word
             mLastDock = dock;
         }
 
-        #endregion
+        #endregion Edge Docking
 
         #region Windows Proc
 
@@ -233,7 +237,11 @@ namespace Fasetto.Word
             return (IntPtr)0;
         }
 
-        #endregion
+        #endregion Windows Proc
+
+
+
+        #region Private Methods
 
         /// <summary>
         /// Get the min/max window size for this window
@@ -297,52 +305,54 @@ namespace Fasetto.Word
             // Now we have the max size, allow the host to tweak as needed
             Marshal.StructureToPtr(lMmi, lParam, true);
         }
+
+        #endregion Private Methods
     }
 
     #region Dll Helper Structures
 
-    enum MonitorOptions : uint
+    /// <inheritdoc />
+    internal enum MonitorOptions : uint
     {
         MONITOR_DEFAULTTONULL = 0x00000000,
         MONITOR_DEFAULTTOPRIMARY = 0x00000001,
         MONITOR_DEFAULTTONEAREST = 0x00000002
     }
 
-
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    public class MONITORINFO
-    {
-        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
-        public Rectangle rcMonitor = new Rectangle();
-        public Rectangle rcWork = new Rectangle();
-        public int dwFlags = 0;
-    }
-
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Rectangle
-    {
-        public int Left, Top, Right, Bottom;
-
-        public Rectangle(int left, int top, int right, int bottom)
-        {
-            this.Left = left;
-            this.Top = top;
-            this.Right = right;
-            this.Bottom = bottom;
-        }
-    }
-
+    /// <inheritdoc />
+    /// <summary>
+    /// Information about maximum and minimum window sizes
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct MINMAXINFO
     {
+        /// <summary>
+        /// Reserved screen area
+        /// </summary>
         public POINT ptReserved;
+
+        /// <summary>
+        /// The maximum size
+        /// </summary>
         public POINT ptMaxSize;
+
+        /// <summary>
+        /// The maximum position on the screeen
+        /// </summary>
         public POINT ptMaxPosition;
+
+        /// <summary>
+        /// Minimum track size(?)
+        /// </summary>
         public POINT ptMinTrackSize;
+
+        /// <summary>
+        /// Maximum track size(?)
+        /// </summary>
         public POINT ptMaxTrackSize;
     };
 
+    /// <inheritdoc />
     [StructLayout(LayoutKind.Sequential)]
     public struct POINT
     {
@@ -350,6 +360,7 @@ namespace Fasetto.Word
         /// x coordinate of point.
         /// </summary>
         public int X;
+
         /// <summary>
         /// y coordinate of point.
         /// </summary>
@@ -365,5 +376,57 @@ namespace Fasetto.Word
         }
     }
 
-    #endregion
+    /// <inheritdoc />
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Rectangle
+    {
+        /// <summary>
+        /// Integer values for a rectangles left, top, right and bottom position (in effect its size)
+        /// </summary>
+        public int Left, Top, Right, Bottom;
+
+        /// <summary>
+        /// The <see cref="Rectangle"/> constructor
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
+        /// <param name="right"></param>
+        /// <param name="bottom"></param>
+        public Rectangle(int left, int top, int right, int bottom)
+        {
+            this.Left = left;
+            this.Top = top;
+            this.Right = right;
+            this.Bottom = bottom;
+        }
+    }
+
+    /// <summary>
+    /// Monitor info such as its total size, available work area and any flags
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public class MONITORINFO
+    {
+        /// <summary>
+        /// The size of the <see cref="MONITORINFO"/>
+        /// </summary>
+        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+
+        /// <summary>
+        /// The total size of the monitor rectangle
+        /// </summary>
+        public Rectangle rcMonitor = new Rectangle();
+
+        /// <summary>
+        /// The actual available are on the monitor
+        /// </summary>
+        public Rectangle rcWork = new Rectangle();
+
+        /// <summary>
+        /// Any Monitor info flags
+        /// </summary>
+        public int dwFlags = 0;
+    }
+
+    #endregion Dll Helper Structures
 }
