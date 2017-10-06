@@ -1,4 +1,4 @@
-﻿version: 0.1.{build}-{branch}
+﻿version: 0.9.{build}-{branch}
 environment:
   BUILD_NUMBER: $(APPVEYOR_BUILD_NUMBER)
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=9
@@ -49,7 +49,7 @@ artifacts:
     type: zip
 deploy:
 - provider: GitHub
-  release: Fasetto.Word-v$(appveyor_build_version)-$(platform)
+  tag: Fasetto.Word-v$(appveyor_build_version)
   description: Fasetto.Word Version $(appveyor_build_version)  for $(platform)
   auth_token:
     secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX

@@ -24,3 +24,5 @@ C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\
 C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Fasetto.Word.exe
 C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Fasetto.Word.pdb
 C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Fasetto.Word.csprojResolveAssemblyReference.cache
+C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Pages\ChatPage.g.cs
+C:\Users\mitos\Nextcloud\Documents\Projects\Fasetto.Word\Fasetto.Word\obj\Debug\Pages\ChatPage.baml
