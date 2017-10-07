@@ -8,7 +8,7 @@
       mc:Ignorable="d"
       Background="Transparent"
       d:DesignHeight="490" d:DesignWidth="400"
-                xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
+      xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
       Title="LoginPage">
     <Border Background="Transparent" Opacity="0.9">
         <Grid>
