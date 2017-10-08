@@ -12,3 +12,6 @@ Coverity Scan Build Status (WIP):
 
 Codacy Code Quality
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/34380d9b86a94d6182046b27113cdc98)](https://www.codacy.com/app/JokerSolutions/Fasetto.Word?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=smeierzubiesen/Fasetto.Word&amp;utm_campaign=Badge_Grade)
+
+Core Infrastructure Initiative
+[![BlackDuck Badge](https://bestpractices.coreinfrastructure.org/projects/1/badge)](https://www.openhub.net/p/Fasetto_Word)
