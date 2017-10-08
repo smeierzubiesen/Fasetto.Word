@@ -50,10 +50,7 @@
                             </Border>
 
                             <!--  Main Content  -->
-                            <Border
-                                Grid.Column="2"
-                                Padding="0,0,8,0"
-                                Background="{StaticResource ForegroundLightBrush}">
+                            <Border Grid.Column="2" Padding="0,0,8,0">
                                 <StackPanel VerticalAlignment="Center">
                                     <!--  Name  -->
                                     <TextBlock
@@ -76,8 +73,8 @@
                                         <ColorAnimation
                                             Storyboard.TargetName="container"
                                             Storyboard.TargetProperty="Background.Color"
-                                            To="{StaticResource ForegroundDark}"
-                                            Duration="0:0:0.2" />
+                                            To="{StaticResource BackgroundLight}"
+                                            Duration="0:0:0.5" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -88,7 +85,7 @@
                                             Storyboard.TargetName="container"
                                             Storyboard.TargetProperty="Background.Color"
                                             To="{StaticResource ForegroundLight}"
-                                            Duration="0:0:0.2" />
+                                            Duration="0:0:0.5" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
