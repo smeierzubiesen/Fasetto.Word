@@ -24,6 +24,11 @@
         public string Initials { get; set; }
 
         /// <summary>
+        /// True if this item is selected
+        /// </summary>
+        public bool IsSelected { get; set; }
+
+        /// <summary>
         /// The latest message from this chat.
         /// </summary>
         public string Message { get; set; }
@@ -34,10 +39,15 @@
         public string Name { get; set; }
 
         /// <summary>
+        /// Indicates whether there is a new message in this chat
+        /// </summary>
+        public bool NewContentAvailable { get; set; }
+
+        /// <summary>
         /// The RGB values (in hex) to assign to this profile picture background
         /// </summary>
         public string ProfilePictureRgb { get; set; }
-
-        #endregion Public Properties
     }
+
+    #endregion Public Properties
 }

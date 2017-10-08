@@ -14,58 +14,61 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Grid x:Name="container" Background="{StaticResource ForegroundLightBrush}">
-                            <Grid.ColumnDefinitions>
+                        <Border x:Name="background" Background="{StaticResource ForegroundLightBrush}">
+                            <Grid x:Name="container" Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <!--  New Message Indicator  -->
+                                    <!--  Profile Picture  -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--  Main Content  -->
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
                                 <!--  New Message Indicator  -->
-                                <ColumnDefinition Width="Auto" />
-                                <!--  Profile Picture  -->
-                                <ColumnDefinition Width="Auto" />
-                                <!--  Main Content  -->
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <!--  New Message Indicator  -->
-                            <Border
-                                Grid.Column="0"
-                                Width="5"
-                                Background="Red" />
-
-                            <!--  Profile Picture padding  -->
-                            <Border Grid.Column="1" Padding="8">
-                                <!--  Profile Picture background  -->
                                 <Border
-                                    Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
-                                    Background="{Binding ProfilePictureRgb, Converter={local:StringRgbToBrushConverter}}"
-                                    CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
-                                    <!--  Profile Picture initials  -->
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontFamily="{StaticResource LatoRegular}"
-                                        FontSize="{StaticResource FontSizeMedium}"
-                                        Foreground="{StaticResource ForegroundLightBrush}"
-                                        Text="{Binding Initials}"
-                                        TextTrimming="WordEllipsis" />
-                                </Border>
-                            </Border>
+                                    Grid.Column="0"
+                                    Width="4"
+                                    HorizontalAlignment="Left"
+                                    Background="Red"
+                                    Visibility="{Binding NewContentAvailable, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" />
 
-                            <!--  Main Content  -->
-                            <Border Grid.Column="2" Padding="0,0,8,0">
-                                <StackPanel VerticalAlignment="Center">
-                                    <!--  Name  -->
-                                    <TextBlock
-                                        FontFamily="{StaticResource LatoRegular}"
-                                        Foreground="{StaticResource WordBlueBrush}"
-                                        Text="{Binding Name}" />
-                                    <!--  Message  -->
-                                    <TextBlock
-                                        FontFamily="{StaticResource LatoThin}"
-                                        Foreground="{StaticResource ForegroundDarkBrush}"
-                                        Text="{Binding Message}"
-                                        TextTrimming="WordEllipsis" />
-                                </StackPanel>
-                            </Border>
-                        </Grid>
+                                <!--  Profile Picture padding  -->
+                                <Border Grid.Column="0" Padding="8">
+                                    <!--  Profile Picture background  -->
+                                    <Border
+                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                        Background="{Binding ProfilePictureRgb, Converter={local:StringRgbToBrushConverter}}"
+                                        CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                                        <!--  Profile Picture initials  -->
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{StaticResource LatoRegular}"
+                                            FontSize="{StaticResource FontSizeMedium}"
+                                            Foreground="{StaticResource ForegroundLightBrush}"
+                                            Text="{Binding Initials}"
+                                            TextTrimming="WordEllipsis" />
+                                    </Border>
+                                </Border>
+
+                                <!--  Main Content  -->
+                                <Border Grid.Column="1" Padding="0,0,8,0">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <!--  Name  -->
+                                        <TextBlock
+                                            FontFamily="{StaticResource LatoRegular}"
+                                            Foreground="{StaticResource WordBlueBrush}"
+                                            Text="{Binding Name}" />
+                                        <!--  Message  -->
+                                        <TextBlock
+                                            FontFamily="{StaticResource LatoThin}"
+                                            Foreground="{StaticResource ForegroundDarkBrush}"
+                                            Text="{Binding Message}"
+                                            TextTrimming="WordEllipsis" />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Border>
                         <ControlTemplate.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
@@ -74,7 +77,7 @@
                                             Storyboard.TargetName="container"
                                             Storyboard.TargetProperty="Background.Color"
                                             To="{StaticResource BackgroundLight}"
-                                            Duration="0:0:0.5" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -84,11 +87,14 @@
                                         <ColorAnimation
                                             Storyboard.TargetName="container"
                                             Storyboard.TargetProperty="Background.Color"
-                                            To="{StaticResource ForegroundLight}"
-                                            Duration="0:0:0.5" />
+                                            To="Transparent"
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
+                            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                <Setter TargetName="background" Property="Background" Value="{StaticResource WordVeryLightBlueBrush}" />
+                            </DataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
