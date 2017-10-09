@@ -100,11 +100,6 @@
         public bool Borderless => windowHandle.WindowState == WindowState.Maximized || windowDockPosition != WindowDockPosition.Undocked;
 
         /// <summary>
-        /// Gets or sets the current page of the App
-        /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
-
-        /// <summary>
         /// Gets or sets the padding of the main windowHandle content
         /// </summary>
         public Thickness InnerContentPadding { get; set; } = new Thickness(0);

@@ -1,4 +1,6 @@
-﻿namespace Fasetto.Word
+﻿using Fasetto.Word.Core;
+
+namespace Fasetto.Word
 {
     using System.Windows;
 
@@ -7,6 +9,9 @@
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public ApplicationViewModel ApplicationViewModel => new ApplicationViewModel();
+
         #region Public Constructors
 
         /// <summary>
@@ -15,7 +20,7 @@
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new WindowViewModel(this);
+            DataContext = new WindowViewModel(this);
         }
 
         #endregion Public Constructors
