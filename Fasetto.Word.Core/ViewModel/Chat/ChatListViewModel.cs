@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
     /// <summary>
     /// A ViewModel for the overview chatlist

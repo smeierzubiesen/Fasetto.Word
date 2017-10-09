@@ -3,6 +3,7 @@
     using System;
     using System.Diagnostics;
     using System.Globalization;
+    using Fasetto.Word.Core;
 
     /// <summary>
     /// Convert an <see cref="ApplicationPage"/> to value of a Page
@@ -11,14 +12,16 @@
     {
         #region Public Methods
 
+        /// <inheritdoc/>
         /// <summary>
-        /// Convert an <see cref="ApplicationPage"/> to an <see cref="object"/> containing the actual PageValue
+        /// Convert an <see cref="T:Fasetto.Word.ApplicationPage"/> to an <see
+        /// cref="T:System.Object"/> containing the actual PageValue
         /// </summary>
-        /// <param name="value">The <see cref="ApplicationPage"/> value to convert</param>
-        /// <param name="targetType">The <see cref="Type"/> to convert to</param>
+        /// <param name="value">The <see cref="T:Fasetto.Word.ApplicationPage"/> value to convert</param>
+        /// <param name="targetType">The <see cref="T:System.Type"/> to convert to</param>
         /// <param name="parameter">Any parameter passed through</param>
-        /// <param name="culture">The language <see cref="CultureInfo"/>.</param>
-        /// <returns>The <see cref="object"/> containing an actual page.</returns>
+        /// <param name="culture">The language <see cref="T:System.Globalization.CultureInfo"/>.</param>
+        /// <returns>The <see cref="T:System.Object"/> containing an actual page.</returns>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)
@@ -29,6 +32,9 @@
 
                     case ApplicationPage.Chat:
                         return new ChatPage();
+
+                    case ApplicationPage.Register:
+                        return new RegisterPage();
 
                     default:
                         Debugger.Break();

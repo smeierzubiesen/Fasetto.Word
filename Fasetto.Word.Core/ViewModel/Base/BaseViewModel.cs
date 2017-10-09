@@ -11,10 +11,11 @@ using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
     using System.ComponentModel;
 
+    /// <inheritdoc/>
     /// <summary>
     /// A base view model that fires PropertyChanged as required
     /// </summary>
@@ -39,7 +40,7 @@ namespace Fasetto.Word
         /// <param name="name">The name of the changed property</param>
         public void OnPropertyChanged(string name)
         {
-            this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
         #endregion Public Methods
@@ -57,7 +58,7 @@ namespace Fasetto.Word
         /// </param>
         /// <param name="action">the <see cref="Action"/> to trigger in case the flag is false.</param>
         /// <returns>The <see cref="Task"/> status</returns>
-        protected async Task RunCommand(Expression<Func<bool>> updatingFlag, Func<Task> action)
+        protected async Task RunCommandAsync(Expression<Func<bool>> updatingFlag, Func<Task> action)
         {
             //Check if the flag property is true, meaning the function is running
             if (updatingFlag.GetPropertyValue())

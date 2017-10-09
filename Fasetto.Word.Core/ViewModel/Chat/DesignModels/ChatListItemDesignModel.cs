@@ -1,8 +1,8 @@
-﻿namespace Fasetto.Word
+﻿namespace Fasetto.Word.Core
 {
     /// <inheritdoc/>
     /// <summary>
-    /// The design-time data for a <see cref="T:Fasetto.Word.ChatListItemViewModel"/>
+    /// The design-time data for a <see cref="T:Fasetto.Word.Core.ChatListItemViewModel"/>
     /// </summary>
     public class ChatListItemDesignModel : ChatListItemViewModel
     {

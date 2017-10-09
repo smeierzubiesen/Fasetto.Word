@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
     /// <inheritdoc/>
     /// <summary>
-    /// The design-time data for a <see cref="T:Fasetto.Word.ChatListViewModel"/>
+    /// The design-time data for a <see cref="T:Fasetto.Word.Core.ChatListViewModel"/>
     /// </summary>
     public class ChatListDesignModel : ChatListViewModel
     {

@@ -62,7 +62,7 @@
             }
 
             // Remove any previous events
-            passwordBox.PasswordChanged -= this.PasswordBox_PasswordChanged;
+            passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
 
             // If the caller set MonitorPassword to true, start listening for an event
             if ((bool)e.NewValue)
@@ -71,7 +71,7 @@
                 HasTextProperty.SetValue(passwordBox);
 
                 // Start listening for password changes
-                passwordBox.PasswordChanged += this.PasswordBox_PasswordChanged;
+                passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
             }
         }
     }

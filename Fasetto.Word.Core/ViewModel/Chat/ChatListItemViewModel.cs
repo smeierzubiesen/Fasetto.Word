@@ -1,4 +1,4 @@
-﻿namespace Fasetto.Word
+﻿namespace Fasetto.Word.Core
 {
     /// <summary>
     /// A ViewModel for each chat list item in the overview chatlist

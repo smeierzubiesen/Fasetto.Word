@@ -18,7 +18,7 @@
         /// <param name="page">TODO The page.</param>
         /// <param name="seconds">TODO The seconds.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public static async Task SlideAndFadeInFromRight(this Page page, float seconds)
+        public static async Task SlideAndFadeInFromRightAsync(this Page page, float seconds)
         {
             var sb = new Storyboard();
             sb.AddSlideFromRight(seconds, page.WindowWidth);
@@ -34,7 +34,7 @@
         /// <param name="page">TODO The page.</param>
         /// <param name="seconds">TODO The seconds.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public static async Task SlideAndFadeOutToLeft(this Page page, float seconds)
+        public static async Task SlideAndFadeOutToLeftAsync(this Page page, float seconds)
         {
             var sb = new Storyboard();
             sb.AddSlideToLeft(seconds, page.WindowWidth);

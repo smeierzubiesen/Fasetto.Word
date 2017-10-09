@@ -2,6 +2,7 @@
     x:Class="Fasetto.Word.ChatListItemControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:Fasetto.Word.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -101,5 +102,5 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <ContentControl d:DataContext="{x:Static local:ChatListItemDesignModel.Instance}" Style="{StaticResource ContentStyle}" />
+    <ContentControl d:DataContext="{x:Static core:ChatListItemDesignModel.Instance}" Style="{StaticResource ContentStyle}" />
 </UserControl>

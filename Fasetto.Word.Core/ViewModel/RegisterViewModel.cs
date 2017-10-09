@@ -1,22 +1,22 @@
-﻿namespace Fasetto.Word
+﻿namespace Fasetto.Word.Core
 {
     using System.Threading.Tasks;
     using System.Windows.Input;
 
     /// <summary>
-    /// The View model for the login screen
+    /// The View model for the register screen
     /// </summary>
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
         /// </summary>
-        public LoginViewModel()
+        public RegisterViewModel()
         {
             // Create commands
-            this.LoginCommand = new RelayParameterizedCommand(async (parameter) => await this.Login(parameter));
+            LoginCommand = new RelayParameterizedCommand(async (parameter) => await LoginAsync(parameter));
         }
 
         #endregion Constructor
@@ -44,12 +44,12 @@
         /// </summary>
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view.</param>
         /// <returns>The result of the login attempt <see cref="Task"/>.</returns>
-        public async Task Login(object parameter)
+        public async Task LoginAsync(object parameter)
         {
-            await RunCommand(() => this.LoginIsRunning, async () =>
+            await RunCommandAsync(() => LoginIsRunning, async () =>
             {
                 await Task.Delay(500);
-                var email = this.Email;
+                var email = Email;
                 var pass = (parameter as IHavePassword)?.SecurePassword.Unsecure();
             });
         }

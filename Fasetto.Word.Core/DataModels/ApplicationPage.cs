@@ -1,4 +1,4 @@
-﻿namespace Fasetto.Word
+﻿namespace Fasetto.Word.Core
 {
     /// <summary>
     /// A page of the application
@@ -13,6 +13,11 @@
         /// <summary>
         /// The main chat page
         /// </summary>
-        Chat = 1
+        Chat = 1,
+
+        /// <summary>
+        /// The registration page
+        /// </summary>
+        Register = 2
     }
 }
