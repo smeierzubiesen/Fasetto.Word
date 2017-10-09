@@ -37,7 +37,7 @@ namespace Fasetto.Word
             }
 
             // Listen for the PageLoad event and hook into it.
-            Loaded += BasePage_Loaded;
+            Loaded += BasePage_LoadedAsync;
 
             // Create a default view model
             ViewModel = new VM();
@@ -96,9 +96,9 @@ namespace Fasetto.Word
         /// </summary>
         /// <param name="sender">The page to be animated</param>
         /// <param name="e">Any parameters passed</param>
-        private void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void BasePage_LoadedAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            Task.Run(async () => await AnimateInAsync());
+            await AnimateInAsync();
         }
 
         /// <summary>
