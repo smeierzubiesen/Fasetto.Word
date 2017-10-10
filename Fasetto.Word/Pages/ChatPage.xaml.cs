@@ -1,5 +1,8 @@
 ﻿namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
+
+    /// <inheritdoc />
     /// <summary>
     /// Interaction logic for ChatPage.xaml
     /// </summary>
@@ -12,7 +15,7 @@
         /// </summary>
         public ChatPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         #endregion Public Constructors

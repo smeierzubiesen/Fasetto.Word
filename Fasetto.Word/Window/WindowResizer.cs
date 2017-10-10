@@ -250,8 +250,7 @@ namespace Fasetto.Word
         private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
         {
             // Get the point position to determine what screen we are on
-            POINT lMousePosition;
-            GetCursorPos(out lMousePosition);
+            GetCursorPos(out var lMousePosition);
 
             // Get the primary monitor at cursor position 0,0
             var lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
@@ -369,8 +368,8 @@ namespace Fasetto.Word
         /// </summary>
         public POINT(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
     }
 
@@ -392,10 +391,10 @@ namespace Fasetto.Word
         /// <param name="bottom"></param>
         public Rectangle(int left, int top, int right, int bottom)
         {
-            this.Left = left;
-            this.Top = top;
-            this.Right = right;
-            this.Bottom = bottom;
+            Left = left;
+            Top = top;
+            Right = right;
+            Bottom = bottom;
         }
     }
 

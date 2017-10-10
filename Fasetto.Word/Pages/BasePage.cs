@@ -6,12 +6,12 @@
 // BasePage for all pages to inherit from and gain basic function
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Fasetto.Word
 {
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
+    using Fasetto.Word.Core;
 
     /// <inheritdoc/>
     /// <summary>
@@ -31,16 +31,16 @@ namespace Fasetto.Word
         public BasePage()
         {
             // If we are animating, hide the animation, for it to load properly
-            if (this.PageLoadAnimation != PageAnimation.None)
+            if (PageLoadAnimation != PageAnimation.None)
             {
-                this.Visibility = Visibility.Collapsed;
+                Visibility = Visibility.Collapsed;
             }
 
             // Listen for the PageLoad event and hook into it.
-            this.Loaded += this.BasePageLoaded;
+            Loaded += BasePage_LoadedAsync;
 
             // Create a default view model
-            this.ViewModel = new VM();
+            ViewModel = new VM();
         }
 
         #endregion Constructor
@@ -69,21 +69,21 @@ namespace Fasetto.Word
         /// </summary>
         public VM ViewModel
         {
-            get => this._ViewModel;
+            get => _ViewModel;
 
             set
             {
                 // if nothing has changed simply return
-                if (this._ViewModel == value)
+                if (_ViewModel == value)
                 {
                     return;
                 }
 
                 // Update the _ViewModel
-                this._ViewModel = value;
+                _ViewModel = value;
 
                 // Update the DataContext
-                this.DataContext = this._ViewModel;
+                DataContext = _ViewModel;
             }
         }
 
@@ -96,26 +96,26 @@ namespace Fasetto.Word
         /// </summary>
         /// <param name="sender">The page to be animated</param>
         /// <param name="e">Any parameters passed</param>
-        private async void BasePageLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void BasePage_LoadedAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            await this.AnimateIn();
+            await AnimateInAsync();
         }
 
         /// <summary>
         /// Animate the PageLoad
         /// </summary>
         /// <returns>The <see cref="Task"/> result</returns>
-        public async Task AnimateIn()
+        public async Task AnimateInAsync()
         {
-            if (this.PageLoadAnimation == PageAnimation.None)
+            if (PageLoadAnimation == PageAnimation.None)
             {
                 return;
             }
 
-            switch (this.PageLoadAnimation)
+            switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
                     break;
 
                 default:
@@ -127,17 +127,17 @@ namespace Fasetto.Word
         /// Animate the PageUnload
         /// </summary>
         /// <returns>The <see cref="Task"/> result</returns>
-        public async Task AnimateOut()
+        public async Task AnimateOutAsync()
         {
-            if (this.PageLoadAnimation == PageAnimation.None)
+            if (PageLoadAnimation == PageAnimation.None)
             {
                 return;
             }
 
-            switch (this.PageUnloadAnimation)
+            switch (PageUnloadAnimation)
             {
                 case PageAnimation.SlideAndFadeOutToLeft:
-                    await this.SlideAndFadeOutToLeft(this.SlideSeconds);
+                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
                     break;
 
                 default:

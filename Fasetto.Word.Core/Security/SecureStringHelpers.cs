@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
     using System.Security;
 

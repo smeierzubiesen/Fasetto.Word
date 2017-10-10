@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LoginPage.xaml.cs" company="mitos[dash]kalandiel">
+// <copyright file="RegisterPage.xaml.cs" company="mitos[dash]kalandiel">
 //     2017 by AngelSix - modified by mitos[dash]kalandiel
 // </copyright>
 // <summary>
-// Interaction logic for LoginPage.xaml
+// Interaction logic for RegisterPage.xaml
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace Fasetto.Word
@@ -12,16 +12,16 @@ namespace Fasetto.Word
     using Fasetto.Word.Core;
 
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for RegisterPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage<LoginViewModel>, IHavePassword
+    public partial class RegisterPage : BasePage<LoginViewModel>, IHavePassword
     {
         #region Public Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage"/> class.
         /// </summary>
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }

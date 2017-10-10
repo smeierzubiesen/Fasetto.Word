@@ -144,7 +144,7 @@
                 x:Name="MainFrame"
                 Grid.Column="1"
                 Background="Transparent"
-                Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
+                Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:ApplicationPageValueConverter}}" />
         </Grid>
     </Border>
 </Window>

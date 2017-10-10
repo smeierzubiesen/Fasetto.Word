@@ -1,15 +1,18 @@
-﻿<local:BasePage x:TypeArguments="local:LoginViewModel" x:Class="Fasetto.Word.ChatPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Fasetto.Word"
-      x:Name="Page"
-      mc:Ignorable="d"
-      Background="Transparent"
-      d:DesignHeight="490" d:DesignWidth="400"
-                xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
-      Title="Chat">
-    <Border Background="Transparent" Opacity="0.9">
-    </Border>
+﻿<local:BasePage
+    x:Class="Fasetto.Word.ChatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:Fasetto.Word.Core;assembly=Fasetto.Word.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
+    xmlns:local="clr-namespace:Fasetto.Word"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="Page"
+    Title="Chat"
+    d:DesignHeight="490"
+    d:DesignWidth="400"
+    x:TypeArguments="core:LoginViewModel"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Border Background="Transparent" Opacity="0.9" />
 </local:BasePage>

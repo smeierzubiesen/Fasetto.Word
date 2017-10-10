@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Fasetto.Word
+namespace Fasetto.Word.Core
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         #region private members
 
@@ -40,8 +40,9 @@ namespace Fasetto.Word
 
         #region Public Events
 
+        /// <inheritdoc />
         /// <summary>
-        /// The event thats fired when the <see cref="CanExecute(object)"/> value has changed.
+        /// The event thats fired when the <see cref="M:Fasetto.Word.Core.RelayCommand.CanExecute(System.Object)" /> value has changed.
         /// </summary>
         public event EventHandler CanExecuteChanged = (sender, e) => { };
 

@@ -1,5 +1,5 @@
 ﻿<local:BasePage
-    x:Class="Fasetto.Word.LoginPage"
+    x:Class="Fasetto.Word.RegisterPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:core="clr-namespace:Fasetto.Word.Core;assembly=Fasetto.Word.Core"
@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="Page"
-    Title="LoginPage"
+    Title="RegisterPage"
     d:DesignHeight="490"
     d:DesignWidth="400"
     x:TypeArguments="core:LoginViewModel"
@@ -35,7 +35,7 @@
                                 FontFamily="{StaticResource LatoRegular}"
                                 FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource WordBlueBrush}"
-                                Text="Sign In" />
+                                Text="Sign Up" />
                             <TextBlock
                                 Margin="0,0,0,20"
                                 FontSize="{StaticResource FontSizeRegular}"
@@ -58,13 +58,12 @@
                                 local:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=Page}"
-                                Content="Login" />
+                                Content="Register" />
                         </StackPanel>
                     </Border>
                     <Button
                         HorizontalAlignment="Center"
-                        Command="{Binding RegisterCommand}"
-                        Content="Or, create a free account.."
+                        Content="Or, I already have an account.."
                         Style="{StaticResource TextButton}" />
                 </StackPanel>
             </ScrollViewer>

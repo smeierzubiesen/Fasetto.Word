@@ -2,6 +2,7 @@
 {
     using System.Windows;
     using System.Windows.Input;
+    using Fasetto.Word.Core;
 
     /// <summary>
     /// The View model for the windowHandle
@@ -46,18 +47,18 @@
             this.windowHandle.StateChanged += (sender, e) =>
                 {
                     // Fire of events on resizing of windowHandle
-                    this.OnPropertyChanged(nameof(this.ResizeBorderThickness));
-                    this.OnPropertyChanged(nameof(this.OuterMarginSize));
-                    this.OnPropertyChanged(nameof(this.OuterMarginSizeThickness));
-                    this.OnPropertyChanged(nameof(this.WindowRadius));
-                    this.OnPropertyChanged(nameof(this.WindowCornerRadius));
+                    OnPropertyChanged(nameof(ResizeBorderThickness));
+                    OnPropertyChanged(nameof(OuterMarginSize));
+                    OnPropertyChanged(nameof(OuterMarginSizeThickness));
+                    OnPropertyChanged(nameof(WindowRadius));
+                    OnPropertyChanged(nameof(WindowCornerRadius));
                 };
 
             // Create commands
-            this.MinimizeCommand = new RelayCommand(() => this.windowHandle.WindowState = WindowState.Minimized);
-            this.MaximizeCommand = new RelayCommand(() => this.windowHandle.WindowState ^= WindowState.Maximized);
-            this.CloseCommand = new RelayCommand(() => this.windowHandle.Close());
-            this.SystemMenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(this.windowHandle, this.GetMousePosition(this.windowHandle)));
+            MinimizeCommand = new RelayCommand(() => this.windowHandle.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => this.windowHandle.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => this.windowHandle.Close());
+            SystemMenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(this.windowHandle, GetMousePosition(this.windowHandle)));
 
             // Fix windowHandle resize issue when windowHandle.style is none
             var resizer = new WindowResizer(this.windowHandle);
@@ -96,12 +97,7 @@
         /// <summary>
         /// Gets or sets true if the windowHandle should be borderless because its docked/maximized
         /// </summary>
-        public bool Borderless => this.windowHandle.WindowState == WindowState.Maximized || this.windowDockPosition != WindowDockPosition.Undocked;
-
-        /// <summary>
-        /// Gets or sets the current page of the App
-        /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
+        public bool Borderless => windowHandle.WindowState == WindowState.Maximized || windowDockPosition != WindowDockPosition.Undocked;
 
         /// <summary>
         /// Gets or sets the padding of the main windowHandle content
@@ -113,25 +109,25 @@
         /// </summary>
         public int OuterMarginSize
         {
-            get => this.Borderless ? 0 : this.outerMarginSize;
-            set => this.outerMarginSize = value;
+            get => Borderless ? 0 : outerMarginSize;
+            set => outerMarginSize = value;
         }
 
         /// <summary>
         /// Gets or sets the thickness of the OuterMargin
         /// </summary>
-        public Thickness OuterMarginSizeThickness => new Thickness(this.OuterMarginSize);
+        public Thickness OuterMarginSizeThickness => new Thickness(OuterMarginSize);
 
         /// <summary>
         /// The size of the resize border around the windowHandle
         /// </summary>
-        public int ResizeBorder => this.Borderless ? 0 : 6;
+        public int ResizeBorder => Borderless ? 0 : 6;
 
         /// <summary>
         /// Gets or sets the size of the resize border around the windowHandle, taking into account
         /// the outer margin
         /// </summary>
-        public Thickness ResizeBorderThickness => new Thickness(this.ResizeBorder + this.OuterMarginSize);
+        public Thickness ResizeBorderThickness => new Thickness(ResizeBorder + OuterMarginSize);
 
         /// <summary>
         /// Gets or sets the height of the title bar
@@ -141,12 +137,12 @@
         /// <summary>
         /// Gets or sets the title bar height as grid length
         /// </summary>
-        public GridLength TitleHeightGridLength => new GridLength(this.TitleHeight + this.ResizeBorder);
+        public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
 
         /// <summary>
         /// Gets or sets the Radius of the corner edge of the windowHandle
         /// </summary>
-        public CornerRadius WindowCornerRadius => new CornerRadius(this.WindowRadius);
+        public CornerRadius WindowCornerRadius => new CornerRadius(WindowRadius);
 
         /// <summary>
         /// Gets or sets the minimum height the windowHandle can be
@@ -163,8 +159,8 @@
         /// </summary>
         public int WindowRadius
         {
-            get => this.Borderless ? 0 : this.windowRadius;
-            set => this.windowRadius = value;
+            get => Borderless ? 0 : windowRadius;
+            set => windowRadius = value;
         }
 
         #endregion Public Properties
