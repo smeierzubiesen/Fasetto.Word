@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using System.Security;
 
     /// <summary>
     /// The View model for the login screen

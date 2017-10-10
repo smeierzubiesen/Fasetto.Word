@@ -134,10 +134,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animation\PageAnimation.cs" />
+    <Compile Include="Animation\FrameworkElementAnimations.cs" />
     <Compile Include="Animation\PageAnimations.cs" />
     <Compile Include="Animation\StoryBoardHelpers.cs" />
     <Compile Include="Attached Properties\BaseAttachedProperty.cs" />
     <Compile Include="Attached Properties\ButtonAttachedProperty.cs" />
+    <Compile Include="Attached Properties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="Attached Properties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="Controls\Chat\ChatListControl.xaml.cs">
       <DependentUpon>ChatListControl.xaml</DependentUpon>

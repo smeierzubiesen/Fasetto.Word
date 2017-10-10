@@ -135,7 +135,7 @@
             </Grid.Background>
 
             <!--  Sidebar  -->
-            <local:SideMenuControl Grid.Column="0">
+            <local:SideMenuControl Grid.Column="0" local:AnimateSlideInFromLeftProperty.Value="False">
                 <local:ChatListControl />
             </local:SideMenuControl>
 
