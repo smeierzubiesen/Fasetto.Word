@@ -50,7 +50,7 @@ artifacts:
 deploy:
 - provider: GitHub
   tag: Fasetto.Word-v$(appveyor_build_version)
-  description: Fasetto.Word Version $(appveyor_build_version)  for $(platform)
+  description: **Fasetto.Word Version $(appveyor_build_version)**\nBuild on Appveyor platform
   auth_token:
     secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
   draft: false
