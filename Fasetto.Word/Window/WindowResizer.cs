@@ -352,9 +352,11 @@ namespace Fasetto.Word
         }
     };
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// A point refered to as Point.X and Point.Y on the screen (or anywhere else)
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Point
+    public struct Point : IEquatable<Point>
     {
         /// <summary>
         /// x coordinate of point.
@@ -373,6 +375,16 @@ namespace Fasetto.Word
         {
             X = x;
             Y = y;
+        }
+
+        /// <summary>
+        /// Implements IEquatable functioni, we're just returning true for simplicity
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Point other)
+        {
+            return true;
         }
     }
 
