@@ -62,6 +62,7 @@
         public async Task RegisterAsync()
         {
             //TODO: go to register page
+            IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
             await Task.Delay(1);
         }
 

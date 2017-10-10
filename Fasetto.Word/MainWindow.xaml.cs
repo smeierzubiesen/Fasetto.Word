@@ -10,8 +10,6 @@ namespace Fasetto.Word
     public partial class MainWindow : Window
     {
 
-        public ApplicationViewModel ApplicationViewModel => new ApplicationViewModel();
-
         #region Public Constructors
 
         /// <summary>

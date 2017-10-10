@@ -23,9 +23,13 @@
 // Defines the App type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System;
+
 namespace Fasetto.Word
 {
     using System.Windows;
+    using Fasetto.Word.Core;
 
     /// <inheritdoc/>
     /// <summary>
@@ -33,5 +37,18 @@ namespace Fasetto.Word
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            // Let the base appliation do what it needs to do
+            base.OnStartup(e);
+
+            // Setup the IoC
+            IoC.Setup();
+
+            //Show the main window
+            Current.MainWindow = new MainWindow();
+            Current.MainWindow.Show();
+        }
+
     }
 }
