@@ -190,7 +190,8 @@ namespace Fasetto.Word
                 dock = WindowDockPosition.Right;
             // None
             else
-                dock = WindowDockPosition.Undocked;
+                return;
+                //dock = WindowDockPosition.Undocked;
 
             // If dock has changed
             if (dock != mLastDock)
@@ -339,16 +340,14 @@ namespace Fasetto.Word
         /// </summary>
         public Point mMaxTrackSize;
 
-        private readonly IEquatable<MinMaxInfo> mEquatableImplementation;
-
         /// <summary>
-        /// Indicates whether wether a type is equal to another
+        /// Return wether a type equals another
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool Equals(MinMaxInfo other)
         {
-            return mEquatableImplementation.Equals(other);
+            return false;
         }
     };
 
