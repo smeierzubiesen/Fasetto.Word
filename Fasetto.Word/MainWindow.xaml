@@ -2,6 +2,7 @@
     x:Class="Fasetto.Word.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:Fasetto;assembly=Fasetto.Word.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,7 +23,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         <!--  Outer border with the dropshadow margin  -->
-                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
                             <!--  Main Window outline  -->
                             <Grid>
 
@@ -103,7 +104,8 @@
                                     <Border
                                         Grid.Row="1"
                                         Padding="{Binding InnerContentPadding}"
-                                        Background="{StaticResource WordBlueBrush}">
+                                        Background="{StaticResource WordBlueBrush}"
+                                        ClipToBounds="True">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
                                 </Grid>
@@ -123,7 +125,7 @@
     <Border Background="{StaticResource WordBlueBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.Background>
@@ -135,7 +137,10 @@
             </Grid.Background>
 
             <!--  Sidebar  -->
-            <local:SideMenuControl Grid.Column="0">
+            <local:SideMenuControl
+                Grid.Column="0"
+                Width="300"
+                local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}">
                 <local:ChatListControl />
             </local:SideMenuControl>
 

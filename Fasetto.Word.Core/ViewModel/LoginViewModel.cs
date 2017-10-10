@@ -61,7 +61,9 @@
         /// <returns>The result of the registration attempt <see cref="Task"/>.</returns>
         public async Task RegisterAsync()
         {
-            //TODO: go to register page
+            // Toggle Side menu
+            IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
+            // Goto the register page
             IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
             await Task.Delay(1);
         }

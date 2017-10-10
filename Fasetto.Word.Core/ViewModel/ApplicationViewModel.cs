@@ -15,5 +15,10 @@ namespace Fasetto.Word.Core
         /// Gets or sets the current page of the App
         /// </summary>
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+
+        /// <summary>
+        /// Indicates wether we can see the sidemenu or not
+        /// </summary>
+        public bool SideMenuVisible { get; set; } = false;
     }
 }
