@@ -171,11 +171,11 @@
         /// Gets the current mouse position on the screen
         /// </summary>
         /// <param name="window">The window handle</param>
-        /// <returns>Returns a mouse position as a <see cref="Point"/></returns>
-        private Point GetMousePosition(Window window)
+        /// <returns>Returns a mouse position as a <see cref="System.Windows.Point"/></returns>
+        private System.Windows.Point GetMousePosition(Window window)
         {
             var position = Mouse.GetPosition(window);
-            return new Point(position.X + window.Left, position.Y + window.Top);
+            return new System.Windows.Point(position.X + window.Left, position.Y + window.Top);
         }
 
         #endregion Private helper functions
