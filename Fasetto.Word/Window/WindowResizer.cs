@@ -378,19 +378,19 @@ namespace Fasetto.Word
         }
 
         /// <summary>
-        /// Implements IEquatable functioni, we're just returning true for simplicity
+        /// Indicates whether wether a type is equal to another
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool Equals(Point other)
         {
-            return true;
+            return false;
         }
     }
 
     /// <inheritdoc/>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Rectangle
+    public struct Rectangle : IEquatable<Rectangle>
     {
         /// <summary>
         /// Integer values for a rectangles left, top, right and bottom position (in effect its size)
@@ -410,6 +410,16 @@ namespace Fasetto.Word
             mTop = top;
             mRight = right;
             mBottom = bottom;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Rectangle other)
+        {
+            return false;
         }
     }
 
