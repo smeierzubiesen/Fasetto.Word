@@ -1,8 +1,8 @@
 ﻿namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
     using System.Windows;
     using System.Windows.Input;
-    using Fasetto.Word.Core;
 
     /// <summary>
     /// The View model for the windowHandle
@@ -14,17 +14,17 @@
         /// <summary>
         /// The margin around the windowHandle to allow for a drop shadow
         /// </summary>
-        private int outerMarginSize = 10;
+        private int mOuterMarginSize = 10;
 
         /// <summary>
         /// The last known dock position
         /// </summary>
-        private WindowDockPosition windowDockPosition = WindowDockPosition.Undocked;
+        private WindowDockPosition mWindowDockPosition = WindowDockPosition.Undocked;
 
         /// <summary>
         /// The windows this ViewModel controls
         /// </summary>
-        private Window windowHandle;
+        private Window mWindowHandle;
 
         /// <summary>
         /// the radius of the edge around the windowHandle
@@ -41,10 +41,10 @@
         /// <param name="windowHandle">The windowHandle.</param>
         public WindowViewModel(Window windowHandle)
         {
-            this.windowHandle = windowHandle;
+            mWindowHandle = windowHandle;
 
             // Listen for Window Resize event
-            this.windowHandle.StateChanged += (sender, e) =>
+            mWindowHandle.StateChanged += (sender, e) =>
                 {
                     // Fire of events on resizing of windowHandle
                     OnPropertyChanged(nameof(ResizeBorderThickness));
@@ -55,13 +55,13 @@
                 };
 
             // Create commands
-            MinimizeCommand = new RelayCommand(() => this.windowHandle.WindowState = WindowState.Minimized);
-            MaximizeCommand = new RelayCommand(() => this.windowHandle.WindowState ^= WindowState.Maximized);
-            CloseCommand = new RelayCommand(() => this.windowHandle.Close());
-            SystemMenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(this.windowHandle, GetMousePosition(this.windowHandle)));
+            MinimizeCommand = new RelayCommand(() => mWindowHandle.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => mWindowHandle.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => mWindowHandle.Close());
+            SystemMenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindowHandle, GetMousePosition(mWindowHandle)));
 
             // Fix windowHandle resize issue when windowHandle.style is none
-            var resizer = new WindowResizer(this.windowHandle);
+            var resizer = new WindowResizer(mWindowHandle);
         }
 
         #endregion Constructor
@@ -97,7 +97,7 @@
         /// <summary>
         /// Gets or sets true if the windowHandle should be borderless because its docked/maximized
         /// </summary>
-        public bool Borderless => windowHandle.WindowState == WindowState.Maximized || windowDockPosition != WindowDockPosition.Undocked;
+        public bool Borderless => mWindowHandle.WindowState == WindowState.Maximized || mWindowDockPosition != WindowDockPosition.Undocked;
 
         /// <summary>
         /// Gets or sets the padding of the main windowHandle content
@@ -109,8 +109,8 @@
         /// </summary>
         public int OuterMarginSize
         {
-            get => Borderless ? 0 : outerMarginSize;
-            set => outerMarginSize = value;
+            get => Borderless ? 0 : mOuterMarginSize;
+            set => mOuterMarginSize = value;
         }
 
         /// <summary>
