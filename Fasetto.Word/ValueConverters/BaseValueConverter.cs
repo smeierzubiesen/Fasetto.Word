@@ -26,18 +26,18 @@ namespace Fasetto.Word
         /// <summary>
         /// A single static instance of the converter
         /// </summary>
-        private static T converter = null;
+        internal static T Converter { get; private set; } = null;
 
         #endregion Private members
 
         #region Markup Extension Methods
 
         /// <summary>
-        /// Provides a static instance of the value converter
+        /// Provides an instance of the value converter
         /// </summary>
         /// <param name="serviceProvider">The service provider</param>
-        /// <returns>A static instance of the converter</returns>
-        public override object ProvideValue(IServiceProvider serviceProvider) => converter ?? (converter = new T());
+        /// <returns>An instance of the converter</returns>
+        public override object ProvideValue(IServiceProvider serviceProvider) => Converter ?? (Converter = new T());
 
         #endregion Markup Extension Methods
 

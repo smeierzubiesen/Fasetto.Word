@@ -37,7 +37,7 @@ namespace Fasetto.Word
         /// <summary>
         /// How close to the edge the window has to be to be detected as at the edge of the screen
         /// </summary>
-        private int mEdgeTolerance = 2;
+        private const int EdgeTolerance = 2;
 
         /// <summary>
         /// The last known dock position
@@ -62,7 +62,7 @@ namespace Fasetto.Word
         /// <summary>
         /// The window to handle the resizing for
         /// </summary>
-        private Window mWindow;
+        private readonly Window _mWindow;
 
         #endregion Private Members
 
@@ -70,13 +70,13 @@ namespace Fasetto.Word
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetCursorPos(out POINT lpPoint);
+        private static extern bool GetCursorPos(out Point lpPoint);
 
         [DllImport("user32.dll")]
-        private static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
+        private static extern bool GetMonitorInfo(IntPtr hMonitor, MonitorInfo lpmi);
 
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
+        private static extern IntPtr MonitorFromPoint(Point pt, MonitorOptions dwFlags);
 
         #endregion Dll Imports
 
@@ -100,16 +100,16 @@ namespace Fasetto.Word
         public WindowResizer(Window window)
         {
             // The Window Handle
-            mWindow = window;
+            _mWindow = window;
 
             // Create transform visual (for converting WPF size to pixel size)
             GetTransform();
 
             // Listen out for source initialized to setup
-            mWindow.SourceInitialized += Window_SourceInitialized;
+            _mWindow.SourceInitialized += Window_SourceInitialized;
 
             // Monitor for edge docking
-            mWindow.SizeChanged += Window_SizeChanged;
+            _mWindow.SizeChanged += Window_SizeChanged;
         }
 
         #endregion Constructor
@@ -122,17 +122,13 @@ namespace Fasetto.Word
         private void GetTransform()
         {
             // Get the visual source
-            var source = PresentationSource.FromVisual(mWindow);
+            var source = PresentationSource.FromVisual(_mWindow);
 
             // Reset the transform to default
             mTransformToDevice = default(Matrix);
 
-            // If we cannot get the source, ignore
-            if (source == null)
-                return;
-
             // Otherwise, get the new transform object
-            mTransformToDevice = source.CompositionTarget.TransformToDevice;
+            if (source?.CompositionTarget != null) mTransformToDevice = source.CompositionTarget.TransformToDevice;
         }
 
         /// <summary>
@@ -143,15 +139,11 @@ namespace Fasetto.Word
         private void Window_SourceInitialized(object sender, System.EventArgs e)
         {
             // Get the handle of this window
-            var handle = (new WindowInteropHelper(mWindow)).Handle;
+            var handle = (new WindowInteropHelper(_mWindow)).Handle;
             var handleSource = HwndSource.FromHwnd(handle);
 
-            // If not found, end
-            if (handleSource == null)
-                return;
-
             // Hook into it's Windows messages
-            handleSource.AddHook(WindowProc);
+            handleSource?.AddHook(WindowProc);
         }
 
         #endregion Initialize
@@ -173,20 +165,20 @@ namespace Fasetto.Word
             var size = e.NewSize;
 
             // Get window rectangle
-            var top = mWindow.Top;
-            var left = mWindow.Left;
+            var top = _mWindow.Top;
+            var left = _mWindow.Left;
             var bottom = top + size.Height;
-            var right = left + mWindow.Width;
+            var right = left + _mWindow.Width;
 
             // Get window position/size in device pixels
-            var windowTopLeft = mTransformToDevice.Transform(new Point(left, top));
-            var windowBottomRight = mTransformToDevice.Transform(new Point(right, bottom));
+            var windowTopLeft = mTransformToDevice.Transform(new System.Windows.Point(left, top));
+            var windowBottomRight = mTransformToDevice.Transform(new System.Windows.Point(right, bottom));
 
             // Check for edges docked
-            var edgedTop = windowTopLeft.Y <= (mScreenSize.Top + mEdgeTolerance);
-            var edgedLeft = windowTopLeft.X <= (mScreenSize.Left + mEdgeTolerance);
-            var edgedBottom = windowBottomRight.Y >= (mScreenSize.Bottom - mEdgeTolerance);
-            var edgedRight = windowBottomRight.X >= (mScreenSize.Right - mEdgeTolerance);
+            var edgedTop = windowTopLeft.Y <= (mScreenSize.Top + EdgeTolerance);
+            var edgedLeft = windowTopLeft.X <= (mScreenSize.Left + EdgeTolerance);
+            var edgedBottom = windowBottomRight.Y >= (mScreenSize.Bottom - EdgeTolerance);
+            var edgedRight = windowBottomRight.X >= (mScreenSize.Right - EdgeTolerance);
 
             // Get docked position
             var dock = WindowDockPosition.Undocked;
@@ -198,7 +190,8 @@ namespace Fasetto.Word
                 dock = WindowDockPosition.Right;
             // None
             else
-                dock = WindowDockPosition.Undocked;
+                return;
+                //dock = WindowDockPosition.Undocked;
 
             // If dock has changed
             if (dock != mLastDock)
@@ -231,6 +224,9 @@ namespace Fasetto.Word
                     WmGetMinMaxInfo(hwnd, lParam);
                     handled = true;
                     break;
+
+                default:
+                    break;
             }
 
             return (IntPtr)0;
@@ -253,15 +249,15 @@ namespace Fasetto.Word
             GetCursorPos(out var lMousePosition);
 
             // Get the primary monitor at cursor position 0,0
-            var lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
+            var lPrimaryScreen = MonitorFromPoint(new Point(0, 0), MonitorOptions.MonitorDefaultToPrimary);
 
             // Try and get the primary screen information
-            var lPrimaryScreenInfo = new MONITORINFO();
+            var lPrimaryScreenInfo = new MonitorInfo();
             if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
                 return;
 
             // Now get the current screen
-            var lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
+            var lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MonitorDefaultToNearest);
 
             // If this has changed from the last one, update the transform
             if (lCurrentScreen != mLastScreen || mTransformToDevice == default(Matrix))
@@ -271,33 +267,33 @@ namespace Fasetto.Word
             mLastScreen = lCurrentScreen;
 
             // Get min/max structure to fill with information
-            var lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+            var lMmi = (MinMaxInfo)Marshal.PtrToStructure(lParam, typeof(MinMaxInfo));
 
             // If it is the primary screen, use the rcWork variable
             if (lPrimaryScreen.Equals(lCurrentScreen) == true)
             {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcWork.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcWork.Right - lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcWork.Bottom - lPrimaryScreenInfo.rcWork.Top;
+                lMmi.mMaxPosition.X = lPrimaryScreenInfo.mRcWork.mLeft;
+                lMmi.mMaxPosition.Y = lPrimaryScreenInfo.mRcWork.mTop;
+                lMmi.mMaxSize.X = lPrimaryScreenInfo.mRcWork.mRight - lPrimaryScreenInfo.mRcWork.mLeft;
+                lMmi.mMaxSize.Y = lPrimaryScreenInfo.mRcWork.mBottom - lPrimaryScreenInfo.mRcWork.mTop;
             }
             // Otherwise it's the rcMonitor values
             else
             {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcMonitor.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcMonitor.Right - lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcMonitor.Bottom - lPrimaryScreenInfo.rcMonitor.Top;
+                lMmi.mMaxPosition.X = lPrimaryScreenInfo.mRcMonitor.mLeft;
+                lMmi.mMaxPosition.Y = lPrimaryScreenInfo.mRcMonitor.mTop;
+                lMmi.mMaxSize.X = lPrimaryScreenInfo.mRcMonitor.mRight - lPrimaryScreenInfo.mRcMonitor.mLeft;
+                lMmi.mMaxSize.Y = lPrimaryScreenInfo.mRcMonitor.mBottom - lPrimaryScreenInfo.mRcMonitor.mTop;
             }
 
             // Set min size
-            var minSize = mTransformToDevice.Transform(new Point(mWindow.MinWidth, mWindow.MinHeight));
+            var minSize = mTransformToDevice.Transform(new System.Windows.Point(_mWindow.MinWidth, _mWindow.MinHeight));
 
-            lMmi.ptMinTrackSize.X = (int)minSize.X;
-            lMmi.ptMinTrackSize.Y = (int)minSize.Y;
+            lMmi.mMinTrackSize.X = (int)minSize.X;
+            lMmi.mMinTrackSize.Y = (int)minSize.Y;
 
             // Store new size
-            mScreenSize = new Rect(lMmi.ptMaxPosition.X, lMmi.ptMaxPosition.Y, lMmi.ptMaxSize.X, lMmi.ptMaxSize.Y);
+            mScreenSize = new Rect(lMmi.mMaxPosition.X, lMmi.mMaxPosition.Y, lMmi.mMaxSize.X, lMmi.mMaxSize.Y);
 
             // Now we have the max size, allow the host to tweak as needed
             Marshal.StructureToPtr(lMmi, lParam, true);
@@ -311,47 +307,58 @@ namespace Fasetto.Word
     /// <inheritdoc/>
     internal enum MonitorOptions : uint
     {
-        MONITOR_DEFAULTTONULL = 0x00000000,
-        MONITOR_DEFAULTTOPRIMARY = 0x00000001,
-        MONITOR_DEFAULTTONEAREST = 0x00000002
+        MonitorDefaultToNull = 0x00000000,
+        MonitorDefaultToPrimary = 0x00000001,
+        MonitorDefaultToNearest = 0x00000002
     }
 
-    /// <inheritdoc/>
     /// <summary>
     /// Information about maximum and minimum window sizes
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct MINMAXINFO
+    public struct MinMaxInfo : IEquatable<MinMaxInfo>
     {
         /// <summary>
         /// Reserved screen area
         /// </summary>
-        public POINT ptReserved;
+        public Point mReserved;
 
         /// <summary>
         /// The maximum size
         /// </summary>
-        public POINT ptMaxSize;
+        public Point mMaxSize;
 
         /// <summary>
         /// The maximum position on the screeen
         /// </summary>
-        public POINT ptMaxPosition;
+        public Point mMaxPosition;
 
         /// <summary>
         /// Minimum track size(?)
         /// </summary>
-        public POINT ptMinTrackSize;
+        public Point mMinTrackSize;
 
         /// <summary>
         /// Maximum track size(?)
         /// </summary>
-        public POINT ptMaxTrackSize;
+        public Point mMaxTrackSize;
+
+        /// <summary>
+        /// Return wether a type equals another
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(MinMaxInfo other)
+        {
+            return false;
+        }
     };
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// A point refered to as Point.X and Point.Y on the screen (or anywhere else)
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct POINT
+    public struct Point : IEquatable<Point>
     {
         /// <summary>
         /// x coordinate of point.
@@ -366,21 +373,31 @@ namespace Fasetto.Word
         /// <summary>
         /// Construct a point of coordinates (x,y).
         /// </summary>
-        public POINT(int x, int y)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;
+        }
+
+        /// <summary>
+        /// Indicates whether wether a type is equal to another
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Point other)
+        {
+            return false;
         }
     }
 
     /// <inheritdoc/>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Rectangle
+    public struct Rectangle : IEquatable<Rectangle>
     {
         /// <summary>
         /// Integer values for a rectangles left, top, right and bottom position (in effect its size)
         /// </summary>
-        public int Left, Top, Right, Bottom;
+        public int mLeft, mTop, mRight, mBottom;
 
         /// <summary>
         /// The <see cref="Rectangle"/> constructor
@@ -391,10 +408,20 @@ namespace Fasetto.Word
         /// <param name="bottom"></param>
         public Rectangle(int left, int top, int right, int bottom)
         {
-            Left = left;
-            Top = top;
-            Right = right;
-            Bottom = bottom;
+            mLeft = left;
+            mTop = top;
+            mRight = right;
+            mBottom = bottom;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Rectangle other)
+        {
+            return false;
         }
     }
 
@@ -402,27 +429,27 @@ namespace Fasetto.Word
     /// Monitor info such as its total size, available work area and any flags
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    public class MONITORINFO
+    public class MonitorInfo
     {
         /// <summary>
-        /// The size of the <see cref="MONITORINFO"/>
+        /// The size of the <see cref="MonitorInfo"/>
         /// </summary>
-        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+        public int mCbSize = Marshal.SizeOf(typeof(MonitorInfo));
 
         /// <summary>
         /// The total size of the monitor rectangle
         /// </summary>
-        public Rectangle rcMonitor = new Rectangle();
+        public Rectangle mRcMonitor = new Rectangle();
 
         /// <summary>
         /// The actual available are on the monitor
         /// </summary>
-        public Rectangle rcWork = new Rectangle();
+        public Rectangle mRcWork = new Rectangle();
 
         /// <summary>
         /// Any Monitor info flags
         /// </summary>
-        public int dwFlags = 0;
+        public int mDwFlags = 0;
     }
 
     #endregion Dll Helper Structures
