@@ -224,6 +224,9 @@ namespace Fasetto.Word
                     WmGetMinMaxInfo(hwnd, lParam);
                     handled = true;
                     break;
+
+                default:
+                    break;
             }
 
             return (IntPtr)0;
