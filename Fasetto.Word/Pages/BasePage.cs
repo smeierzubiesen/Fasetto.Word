@@ -8,21 +8,18 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
-    using Fasetto.Word.Core;
 
     /// <inheritdoc/>
     /// <summary>
-    /// BasePage for all pages to inherit from and gain basic function
+    /// BasePage for all pages to inherit from and gain basic functionality
     /// </summary>
-    /// <typeparam name="VM">The _ViewModel Type</typeparam>
-    public class BasePage<VM> : Page
-        where VM : BaseViewModel, new()
-
+    public class BasePage : Page
     {
-        #region Constructor
+        #region Public Constructors
 
         /// <inheritdoc/>
         /// <summary>
@@ -38,16 +35,19 @@ namespace Fasetto.Word
 
             // Listen for the PageLoad event and hook into it.
             Loaded += BasePage_LoadedAsync;
-
-            // Create a default view model
-            ViewModel = new VM();
         }
 
-        #endregion Constructor
+        #endregion Public Constructors
 
 
 
         #region Public Properties
+
+        /// <summary>
+        /// A flag to indicate if this page should animate out on load. Useful for when we are moving
+        /// the page to another frame
+        /// </summary>
+        public bool AnimateOut { get; set; }
 
         /// <summary>
         /// Gets or sets the page load animation.
@@ -62,30 +62,7 @@ namespace Fasetto.Word
         /// <summary>
         /// Gets or sets how long the slide animation lasts
         /// </summary>
-        public float SlideSeconds { get; set; } = 0.8f;
-
-        /// <summary>
-        /// Gets or sets the view model for this page.
-        /// </summary>
-        public VM ViewModel
-        {
-            get => _ViewModel;
-
-            set
-            {
-                // if nothing has changed simply return
-                if (_ViewModel == value)
-                {
-                    return;
-                }
-
-                // Update the _ViewModel
-                _ViewModel = value;
-
-                // Update the DataContext
-                DataContext = _ViewModel;
-            }
-        }
+        public float SlideSeconds { get; set; } = 0.4f;
 
         #endregion Public Properties
 
@@ -98,7 +75,14 @@ namespace Fasetto.Word
         /// <param name="e">Any parameters passed</param>
         private async void BasePage_LoadedAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            await AnimateInAsync();
+            if (AnimateOut)
+            {
+                await AnimateOutAsync();
+            }
+            else
+            {
+                await AnimateInAsync();
+            }
         }
 
         /// <summary>
@@ -146,13 +130,66 @@ namespace Fasetto.Word
         }
 
         #endregion Animation Load / Unload
+    }
+
+    /// <inheritdoc/>
+    /// <summary>
+    /// A base page with added ViewModel support
+    /// </summary>
+    /// <typeparam name="VM">The mViewModel Type</typeparam>
+    public class BasePage<VM> : BasePage
+        where VM : BaseViewModel, new()
+
+    {
+        #region Constructor
+
+        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Fasetto.Word.BasePage"/> class.
+        /// </summary>
+        public BasePage() : base()
+        {
+            // Create a default view model
+            ViewModel = new VM();
+        }
+
+        #endregion Constructor
+
+
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the view model for this page.
+        /// </summary>
+        public VM ViewModel
+        {
+            get => mViewModel;
+
+            set
+            {
+                // if nothing has changed simply return
+                if (mViewModel == value)
+                {
+                    return;
+                }
+
+                // Update the mViewModel
+                mViewModel = value;
+
+                // Update the DataContext
+                DataContext = mViewModel;
+            }
+        }
+
+        #endregion Public Properties
 
         #region Private members
 
         /// <summary>
-        /// The _ViewModel associated with this page
+        /// The mViewModel associated with this page
         /// </summary>
-        private VM _ViewModel { get; set; }
+        private VM mViewModel { get; set; }
 
         #endregion Private members
     }

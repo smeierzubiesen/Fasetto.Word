@@ -8,13 +8,13 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Fasetto.Word
 {
-    using System.Security;
     using Fasetto.Word.Core;
+    using System.Security;
 
     /// <summary>
     /// Interaction logic for RegisterPage.xaml
     /// </summary>
-    public partial class RegisterPage : BasePage<LoginViewModel>, IHavePassword
+    public partial class RegisterPage : BasePage<RegisterViewModel>, IHavePassword
     {
         #region Public Constructors
 
