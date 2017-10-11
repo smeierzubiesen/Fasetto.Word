@@ -148,8 +148,11 @@
             <Frame
                 x:Name="MainFrame"
                 Grid.Column="1"
+                d:DataContext=""
+                local:NoFrameHistory.Value="True"
                 Background="Transparent"
-                Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:ApplicationPageValueConverter}}" />
+                Content="{Binding}"
+                DataContext="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:ApplicationPageValueConverter}}" />
         </Grid>
     </Border>
 </Window>
