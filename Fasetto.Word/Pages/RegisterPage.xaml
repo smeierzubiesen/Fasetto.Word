@@ -11,7 +11,7 @@
     Title="RegisterPage"
     d:DesignHeight="490"
     d:DesignWidth="400"
-    x:TypeArguments="core:LoginViewModel"
+    x:TypeArguments="core:RegisterViewModel"
     Background="Transparent"
     mc:Ignorable="d">
     <Border Background="Transparent" Opacity="0.9">
@@ -52,17 +52,18 @@
                                 Tag="Password" />
 
                             <!--  Next button  -->
-                            <!--  TODO maybe disable the button on the {Binding LoginIsRunning}, this will need a ValueConverter to invert the boolean  -->
+                            <!--  TODO maybe disable the button on the {Binding RegisterIsRunning}, this will need a ValueConverter to invert the boolean  -->
                             <Button
                                 HorizontalAlignment="Center"
-                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
-                                Command="{Binding LoginCommand}"
+                                local:IsBusyProperty.Value="{Binding RegisterIsRunning}"
+                                Command="{Binding RegisterCommand}"
                                 CommandParameter="{Binding ElementName=Page}"
                                 Content="Register" />
                         </StackPanel>
                     </Border>
                     <Button
                         HorizontalAlignment="Center"
+                        Command="{Binding LoginCommand}"
                         Content="Or, I already have an account.."
                         Style="{StaticResource TextButton}" />
                 </StackPanel>

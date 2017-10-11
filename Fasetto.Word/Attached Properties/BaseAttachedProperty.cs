@@ -9,7 +9,7 @@
     /// <typeparam name="TParent">The parent class to the attached property</typeparam>
     /// <typeparam name="TProperty">The type of this attached property</typeparam>
     public abstract class BaseAttachedProperty<TParent, TProperty>
-        where TParent : BaseAttachedProperty<TParent, TProperty>, new()
+        where TParent : new()
     {
         #region Public Properties
 
@@ -27,7 +27,6 @@
         /// </summary>
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", typeof(TProperty), typeof(BaseAttachedProperty<TParent, TProperty>), new UIPropertyMetadata(default(TProperty), new PropertyChangedCallback(OnValuePropertyChanged), new CoerceValueCallback(OnValuePropertyUpdated)));
 
-
         /// <summary>
         /// The callback event when the <see cref="ValueProperty"/> is changed
         /// </summary>
@@ -36,10 +35,10 @@
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             // Call the parent function
-            Instance.OnValueChanged(d, e);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueChanged(d, e);
 
             // Call event listeners
-            Instance.ValueChanged(d, e);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueChanged(d, e);
         }
 
         /// <summary>
@@ -50,10 +49,10 @@
         private static object OnValuePropertyUpdated(DependencyObject d, object value)
         {
             //Call the parent function
-            Instance.OnValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.OnValueUpdated(d, value);
 
             //Call the event listeners
-            Instance.ValueUpdated(d, value);
+            (Instance as BaseAttachedProperty<TParent, TProperty>)?.ValueUpdated(d, value);
 
             //Return the value
             return value;
@@ -101,14 +100,14 @@
         }
 
         /// <summary>
-        /// The method that is called when any attached property of this type is changed, even if the value is the same
+        /// The method that is called when any attached property of this type is changed, even if the
+        /// value is the same
         /// </summary>
         /// <param name="sender">The UI element that this property was changed for</param>
         /// <param name="value">The arguments for this event</param>
         public virtual void OnValueUpdated(DependencyObject sender, object value)
         {
         }
-
 
         #endregion Event Methods
     }

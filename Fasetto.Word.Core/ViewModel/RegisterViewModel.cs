@@ -11,12 +11,13 @@
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
+        /// Initializes a new instance of the <see cref="RegisterViewModel"/> class.
         /// </summary>
         public RegisterViewModel()
         {
             // Create commands
-            LoginCommand = new RelayParameterizedCommand(async (parameter) => await LoginAsync(parameter));
+            LoginCommand = new RelayCommand(async () => await LoginAsync());
+            RegisterCommand = new RelayParameterizedCommand(async (parameter) => await RegisterAsync(parameter));
         }
 
         #endregion Constructor
@@ -31,26 +32,37 @@
         public string Email { get; set; }
 
         /// <summary>
-        /// A flag to indicate whether the login command is running
+        /// A flag to indicate whether the register command is running
         /// </summary>
-        public bool LoginIsRunning { get; set; }
+        public bool RegisterIsRunning { get; set; }
 
         #endregion Public Properties
 
         #region Public Functions
 
         /// <summary>
-        /// Attempts to log the user in.
+        /// Switch to the login page
+        /// </summary>
+        /// <returns>The result of the registration attempt <see cref="Task"/>.</returns>
+        public async Task LoginAsync()
+        {
+            // Toggle Side menu
+            //IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
+            // Goto the login page
+            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Login);
+            await Task.Delay(1);
+        }
+
+        /// <summary>
+        /// Attempts to register the user.
         /// </summary>
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view.</param>
-        /// <returns>The result of the login attempt <see cref="Task"/>.</returns>
-        public async Task LoginAsync(object parameter)
+        /// <returns>The result of the register attempt <see cref="Task"/>.</returns>
+        public async Task RegisterAsync(object parameter)
         {
-            await RunCommandAsync(() => LoginIsRunning, async () =>
+            await RunCommandAsync(() => RegisterIsRunning, async () =>
             {
                 await Task.Delay(500);
-                var email = Email;
-                var pass = (parameter as IHavePassword)?.SecurePassword.Unsecure();
             });
         }
 
@@ -59,9 +71,14 @@
         #region Commands
 
         /// <summary>
-        /// Gets or sets the command process the login
+        /// Gets or sets the command to process the login
         /// </summary>
         public ICommand LoginCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command to forward to the register page
+        /// </summary>
+        public ICommand RegisterCommand { get; set; }
 
         #endregion Commands
     }

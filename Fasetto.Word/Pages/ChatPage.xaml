@@ -14,5 +14,12 @@
     x:TypeArguments="core:LoginViewModel"
     Background="Transparent"
     mc:Ignorable="d">
-    <Border Background="Transparent" Opacity="0.9" />
+    <Border Background="Transparent" Opacity="0.9">
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="{StaticResource FontSizeLarge}"
+            Foreground="{StaticResource ForegroundLightBrush}"
+            Text="Hello Fasetto" />
+    </Border>
 </local:BasePage>

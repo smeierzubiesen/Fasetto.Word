@@ -50,8 +50,11 @@
             await RunCommandAsync(() => LoginIsRunning, async () =>
             {
                 await Task.Delay(500);
-                var email = Email;
-                var pass = (parameter as IHavePassword)?.SecurePassword.Unsecure();
+
+                //Go to chatpage
+                IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
+                //var email = Email;
+                //var pass = (parameter as IHavePassword)?.SecurePassword.Unsecure();
             });
         }
 
@@ -62,9 +65,9 @@
         public async Task RegisterAsync()
         {
             // Toggle Side menu
-            IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
+            //IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
             // Goto the register page
-            IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
+            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
             await Task.Delay(1);
         }
 

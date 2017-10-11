@@ -138,6 +138,7 @@
     <Compile Include="Animation\PageAnimations.cs" />
     <Compile Include="Animation\StoryBoardHelpers.cs" />
     <Compile Include="Attached Properties\BaseAttachedProperty.cs" />
+    <Compile Include="Attached Properties\NoFrameHistory.cs" />
     <Compile Include="Attached Properties\ButtonAttachedProperty.cs" />
     <Compile Include="Attached Properties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="Attached Properties\PasswordBoxAttachedProperties.cs" />
@@ -146,6 +147,9 @@
     </Compile>
     <Compile Include="Controls\Chat\ChatListItemControl.xaml.cs">
       <DependentUpon>ChatListItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageHost.xaml.cs">
+      <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
@@ -173,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Chat\ChatListItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
