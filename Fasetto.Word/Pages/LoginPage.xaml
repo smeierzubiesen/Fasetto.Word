@@ -33,12 +33,12 @@
                         <StackPanel>
                             <TextBlock
                                 FontFamily="{StaticResource LatoRegular}"
-                                FontSize="{StaticResource FontSizeLarge}"
+                                FontSize="{StaticResource FontSizeXXLarge}"
                                 Foreground="{StaticResource WordBlueBrush}"
                                 Text="Sign In" />
                             <TextBlock
                                 Margin="0,0,0,20"
-                                FontSize="{StaticResource FontSizeRegular}"
+                                FontSize="{StaticResource FontSizeLarge}"
                                 Foreground="{StaticResource ForegroundDarkBrush}"
                                 Text="It's all about having fun" />
 

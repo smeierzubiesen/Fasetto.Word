@@ -15,11 +15,6 @@
     Background="Transparent"
     mc:Ignorable="d">
     <Border Background="Transparent" Opacity="0.9">
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="{StaticResource FontSizeLarge}"
-            Foreground="{StaticResource ForegroundLightBrush}"
-            Text="Hello Fasetto" />
+        <local:ChatMessageListControl />
     </Border>
 </local:BasePage>

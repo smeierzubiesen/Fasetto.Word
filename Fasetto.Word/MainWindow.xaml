@@ -23,7 +23,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         <!--  Outer border with the dropshadow margin  -->
-                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
                             <!--  Main Window outline  -->
                             <Grid>
 
@@ -74,7 +74,7 @@
                                                 <TextBlock
                                                     Margin="0,0,0,-5"
                                                     FontFamily="{StaticResource LatoBold}"
-                                                    FontSize="{StaticResource FontSizeRegular}">
+                                                    FontSize="{StaticResource FontSizeLarge}">
                                                     <Run Foreground="{StaticResource WordOrangeBrush}" Text="W" /><Run Foreground="{StaticResource WordBlueBrush}" Text="O" /><Run Foreground="{StaticResource WordRedBrush}" Text="R" /><Run Foreground="{StaticResource WordGreenBrush}" Text="D" />
                                                 </TextBlock>
                                                 <TextBlock

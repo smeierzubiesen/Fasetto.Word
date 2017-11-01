@@ -81,7 +81,7 @@
         <Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="50,10" />
         <Setter Property="Margin" Value="0,10" />
@@ -103,6 +103,7 @@
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Focusable="False"
                                 FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                 Text="{TemplateBinding Content}"
                                 Visibility="{TemplateBinding local:IsBusyProperty.Value,
@@ -157,8 +158,8 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
-        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource LatoThin}" />
         <Setter Property="Padding" Value="50,10" />
         <Setter Property="Margin" Value="0,10" />
         <Setter Property="Template">
@@ -178,6 +179,7 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Focusable="False"
                             FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             Text="{TemplateBinding Content}" />
                     </Border>
@@ -221,7 +223,7 @@
         <Setter Property="Background" Value="{StaticResource WordBlueBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
         <Setter Property="Padding" Value="20" />
         <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" />
@@ -242,6 +244,7 @@
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Focusable="False"
                                     FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                     Text="{TemplateBinding Content}" />
                             </Viewbox>
