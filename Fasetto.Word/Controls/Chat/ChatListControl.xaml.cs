@@ -3,13 +3,16 @@
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for ChatMessageListControl.xaml
+    /// Interaction logic for ChatListControl.xaml
     /// </summary>
-    public partial class ChatMessageListControl : UserControl
+    public partial class ChatListControl : UserControl
     {
         #region Public Constructors
 
-        public ChatMessageListControl()
+        /// <summary>
+        /// The ChatList Control Constructor
+        /// </summary>
+        public ChatListControl()
         {
             InitializeComponent();
         }

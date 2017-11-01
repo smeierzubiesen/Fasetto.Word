@@ -14,6 +14,11 @@ namespace Fasetto.Word
     {
         #region Public Methods
 
+        /// <summary>
+        /// What happends when the history of the frame changes?
+        /// </summary>
+        /// <param name="sender">The frame that has a changed content value</param>
+        /// <param name="e">The event arguments passed along</param>
         public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var frame = (sender as Frame);
