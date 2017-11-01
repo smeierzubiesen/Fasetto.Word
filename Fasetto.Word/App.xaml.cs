@@ -24,12 +24,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
 namespace Fasetto.Word
 {
-    using System.Windows;
     using Fasetto.Word.Core;
+    using System.Windows;
 
     /// <inheritdoc/>
     /// <summary>
@@ -37,6 +35,12 @@ namespace Fasetto.Word
     /// </summary>
     public partial class App : Application
     {
+        #region Protected Methods
+
+        /// <summary>
+        /// What do we during the OnStartup event for the application.
+        /// </summary>
+        /// <param name="e">event argument(s)</param>
         protected override void OnStartup(StartupEventArgs e)
         {
             // Let the base appliation do what it needs to do
@@ -50,5 +54,6 @@ namespace Fasetto.Word
             Current.MainWindow.Show();
         }
 
+        #endregion Protected Methods
     }
 }

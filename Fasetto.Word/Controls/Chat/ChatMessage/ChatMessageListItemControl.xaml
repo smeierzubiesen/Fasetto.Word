@@ -10,16 +10,16 @@
     <Border Padding="5" Background="{StaticResource WordBlueBrush}">
         <Grid>
 
-            <!--  Profile Picture  -->
+            <!--  Profile picture  -->
             <Border
                 Width="35"
                 Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
-                Margin="0,5,0,5"
+                Margin="0,7.5,0,7.5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Background="Green"
                 BorderBrush="{StaticResource ForegroundLightBrush}"
-                BorderThickness="1"
+                BorderThickness=".75"
                 CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
                 <TextBlock
                     HorizontalAlignment="Center"
@@ -29,7 +29,7 @@
                     Text="SM" />
             </Border>
 
-            <!--  Chat message container  -->
+            <!--  Chat Message container  -->
             <Grid Margin="25,0,0,0" HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -39,37 +39,40 @@
 
                 <!--  Speech bubble rectangle  -->
                 <Border
-                    Margin="5,0,0,0"
+                    Grid.Row="0"
                     Padding="15"
                     Background="{StaticResource ForegroundLightBrush}"
                     CornerRadius="10">
-
-                    <!--  Message text  -->
                     <TextBlock
                         VerticalAlignment="Center"
                         FontFamily="{StaticResource LatoRegular}"
                         Foreground="{StaticResource WordDarkBlueBrush}"
-                        Text="Test message in Fasetto Word! When is it going to be released? I am dying to use it right effin NOW!!"
+                        Text="This chat is awesome! When will it be released? Looking good so far :)"
                         TextWrapping="Wrap" />
                 </Border>
-                <!--  Chat bubble anchor (triangle)  -->
+
+                <!--  Chat bubble bottom arrow  -->
                 <Path
                     Grid.Row="1"
-                    Margin="15,0,15,0"
+                    Margin="15,-1,15,0"
                     Panel.ZIndex="1"
-                    Data="M 0,-1 l 8,8 l 8,-8 z"
                     Fill="{StaticResource ForegroundLightBrush}"
                     Stroke="{StaticResource ForegroundLightBrush}"
                     StrokeLineJoin="Round"
-                    StrokeThickness="2" />
+                    StrokeThickness="3">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0,0 l 10,10 l 10,-10 z" />
+                    </Path.Data>
+                </Path>
 
-                <!--  time stamp  -->
+                <!--  Timestamp  -->
                 <TextBlock
                     Grid.Row="2"
                     HorizontalAlignment="Right"
+                    FontFamily="{StaticResource LatoRegular}"
                     FontSize="{StaticResource FontSizeSmall}"
                     Foreground="{StaticResource ForegroundLightBrush}"
-                    Text="31/12/2017 15:45" />
+                    Text="11:54 am" />
             </Grid>
         </Grid>
     </Border>

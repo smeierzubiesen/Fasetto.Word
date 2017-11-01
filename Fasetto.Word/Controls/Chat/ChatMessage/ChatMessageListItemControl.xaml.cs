@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-
-namespace Fasetto.Word
+﻿namespace Fasetto.Word
 {
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for ChatMessageListItemControl.xaml
     /// </summary>
@@ -9,6 +9,9 @@ namespace Fasetto.Word
     {
         #region Public Constructors
 
+        /// <summary>
+        /// The ChatMessage List Item control constructor
+        /// </summary>
         public ChatMessageListItemControl()
         {
             InitializeComponent();

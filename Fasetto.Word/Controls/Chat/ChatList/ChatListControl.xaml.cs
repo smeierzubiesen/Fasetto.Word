@@ -9,6 +9,9 @@ namespace Fasetto.Word
     {
         #region Public Constructors
 
+        /// <summary>
+        /// The ChatList Control Constructor
+        /// </summary>
         public ChatListControl()
         {
             InitializeComponent();

@@ -12,7 +12,7 @@
         <Setter Property="Margin" Value="0,6" />
     </Style>
 
-    <!--  Text Box  -->
+    <!--  Base Style for TextBox  -->
     <Style BasedOn="{StaticResource BaseStyle}" TargetType="{x:Type TextBox}">
         <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
@@ -75,7 +75,7 @@
         </Setter>
     </Style>
 
-    <!--  Password Box  -->
+    <!--  Base Style for PasswordBox  -->
     <Style BasedOn="{StaticResource BaseStyle}" TargetType="{x:Type PasswordBox}">
         <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />

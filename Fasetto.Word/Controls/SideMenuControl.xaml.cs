@@ -9,6 +9,9 @@ namespace Fasetto.Word
     {
         #region Public Constructors
 
+        /// <summary>
+        /// The SideMenu Control Constructor
+        /// </summary>
         public SideMenuControl()
         {
             InitializeComponent();
