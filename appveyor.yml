@@ -3,6 +3,8 @@ environment:
   BUILD_NUMBER: $(APPVEYOR_BUILD_NUMBER)
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=7
 skip_tags: true
+init:
+  - git config --global core.autocrlf input
 pull_requests:
   do_not_increment_build_number: true
 skip_branch_with_pr: true
@@ -72,4 +74,4 @@ on_success:
   - cd C:\Projects\fasseto-word\doc
   - git add -A --ignore-removal .
   - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
-  - git push origin $($env:APPVEYOR_REPO_BRANCH)
+  - git push
