@@ -4,6 +4,8 @@ environment:
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=7
   auth_token:
     secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
+  appveyor_rdp_password:
+    secure: y6+0kl3pd9B+Nu4usCJngQ==
 skip_tags: true
 init:
   - git config --global core.autocrlf input
@@ -76,5 +78,5 @@ on_success:
   - cd C:\Projects\fasseto-word\doc
   - git add -A --ignore-removal .
   - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
-  - SET
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   - git push origin ${APPVEYOR_REPO_BRANCH}
