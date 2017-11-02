@@ -2,6 +2,8 @@
 environment:
   BUILD_NUMBER: $(APPVEYOR_BUILD_NUMBER)
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=7
+  auth_token:
+    secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
 skip_tags: true
 init:
   - git config --global core.autocrlf input
@@ -25,8 +27,7 @@ matrix:
     - platform: x64
       configuration: Release
 install:
-  - choco install doxygen.portable
-  - choco install graphviz.portable
+  - appveyor-retry choco install doxygen.portable graphviz.portable
 cache:
  - C:\ProgramData\chocolatey\bin -> appveyor.yml
  - C:\ProgramData\chocolatey\lib -> appveyor.yml
@@ -35,7 +36,7 @@ cache:
 before_build:
   appveyor-retry nuget restore
 after_build:
-  - pip install sphinx sphinx-autobuild recommonmark
+  - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasseto-word\doc
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
