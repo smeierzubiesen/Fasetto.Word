@@ -18,6 +18,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fasetto.Word.Core", "Fasetto.Word.Core\Fasetto.Word.Core.csproj", "{84E96AFB-D660-4CF4-8426-686CB1E1DFAB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{358FDC48-8EA5-4F11-95BE-D9CCCBE0394B}"
+	ProjectSection(SolutionItems) = preProject
+		doc\conf.py = doc\conf.py
+		doc\index.rst = doc\index.rst
+		doc\make.bat = doc\make.bat
+		doc\Makefile = doc\Makefile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_build", "_build", "{E905997D-0590-4D3E-AC4A-05B878B8CAF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doctrees", "doctrees", "{3BBD5083-DB03-4344-B5B5-1DE3B76C737E}"
+	ProjectSection(SolutionItems) = preProject
+		doc\_build\doctrees\environment.pickle = doc\_build\doctrees\environment.pickle
+		doc\_build\doctrees\index.doctree = doc\_build\doctrees\index.doctree
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_static", "_static", "{F4779B7A-77C8-4A9E-B76C-80500F1C6961}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_templates", "_templates", "{1A09040D-9A70-41D6-9D6D-AE5783210F14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -45,6 +65,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E905997D-0590-4D3E-AC4A-05B878B8CAF4} = {358FDC48-8EA5-4F11-95BE-D9CCCBE0394B}
+		{3BBD5083-DB03-4344-B5B5-1DE3B76C737E} = {E905997D-0590-4D3E-AC4A-05B878B8CAF4}
+		{F4779B7A-77C8-4A9E-B76C-80500F1C6961} = {358FDC48-8EA5-4F11-95BE-D9CCCBE0394B}
+		{1A09040D-9A70-41D6-9D6D-AE5783210F14} = {358FDC48-8EA5-4F11-95BE-D9CCCBE0394B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCCC085D-4D09-44FE-A6A0-DC776363DB0A}
