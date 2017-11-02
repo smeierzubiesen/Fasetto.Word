@@ -8,8 +8,8 @@ environment:
     secure: WihliQXigZq/qXP0kU43hw==
 configuration: Release
 platform:
-- x64
 - x86
+- x64
 skip_tags: true
 init:
   - git config --global core.autocrlf input
@@ -41,7 +41,7 @@ before_build:
 - appveyor-retry nuget restore
 after_build:
 - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
-- cd C:\Projects\fasseto-word\doc
+- cd C:\Projects\fasseto-word\doc\sphinx
 #- git checkout %APPVEYOR_REPO_BRANCH%
 - git checkout -B docs
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
