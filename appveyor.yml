@@ -49,7 +49,7 @@ build:
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
     name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
-    type zip
+    type: zip
   - path: doc\_build\html
     name: Fasseto.Word.Docs-${platform}
     type: zip
