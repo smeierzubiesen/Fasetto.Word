@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
-		Fasetto.Word.Doxyfile = Fasetto.Word.Doxyfile
 		Fasetto.Word.xml = Fasetto.Word.xml
 		README.md = README.md
 	EndProjectSection
@@ -21,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{358FDC48-8EA5-4F11-95BE-D9CCCBE0394B}"
 	ProjectSection(SolutionItems) = preProject
 		doc\conf.py = doc\conf.py
+		doc\Doxyfile = doc\Doxyfile
 		doc\index.rst = doc\index.rst
 		doc\make.bat = doc\make.bat
 		doc\Makefile = doc\Makefile

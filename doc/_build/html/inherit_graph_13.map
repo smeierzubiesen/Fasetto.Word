@@ -1,4 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_fasetto_1_1_word_1_1_base_value_converter.html" title="Fasetto.Word.BaseValueConverter\l\&lt; SentByMeToAlignmentConverter \&gt;" alt="" coords="5,5,239,47"/>
-<area shape="rect" id="node2" href="$class_fasetto_1_1_word_1_1_sent_by_me_to_alignment_converter.html" title="A converter that takes in a boolean if a message was sent by me ( Fasetto.Word.Core.ChatMessageListItemViewModel.SentByMe), and aligns to the right If not sent by me, aligns to the left " alt="" coords="287,5,525,47"/>
-</map>
