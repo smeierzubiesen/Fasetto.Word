@@ -40,6 +40,10 @@ cache:
 before_build:
 - appveyor-retry nuget restore
 after_build:
+- git config --global credential.helper store
+- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
+- git config --global user.email "mitoskalandiel@gmail.com"
+- git config --global user.name "Mitos Kalandiel"
 - appveyor-retry pip install sphinx sphinx-autobuild recommonmark breathe
 - cd C:\Projects\fasseto-word\doc
 - git checkout -B docs
@@ -48,10 +52,6 @@ after_build:
 - cd sphinx
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
-- git config --global credential.helper store
-- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
-- git config --global user.email "mitoskalandiel@gmail.com"
-- git config --global user.name "Mitos Kalandiel"
 - cd C:\Projects\fasseto-word\doc
 - git add -A --ignore-removal .
 - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
