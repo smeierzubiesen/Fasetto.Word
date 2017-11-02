@@ -6,6 +6,10 @@ environment:
     secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
   appveyor_rdp_password:
     secure: WihliQXigZq/qXP0kU43hw==
+configuration: Release
+platform:
+- x64
+- x86
 skip_tags: true
 init:
   - git config --global core.autocrlf input
@@ -16,31 +20,32 @@ image: Visual Studio 2017
 branches:
   # blacklist
   except:
-    - gh-pages
-    - docs
+  - gh-pages
+  - docs
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
   allow_failures:
-    - platform: x86
-      configuration: Release
-    - platform: x64
-      configuration: Release
+  - platform: x86
+    configuration: Release
+  - platform: x64
+    configuration: Release
 install:
-  - appveyor-retry choco install doxygen.portable graphviz.portable
+- appveyor-retry choco install doxygen.portable graphviz.portable
 cache:
  - C:\ProgramData\chocolatey\bin -> appveyor.yml
  - C:\ProgramData\chocolatey\lib -> appveyor.yml
  - c:\python36\lib\site-packages -> appveyor.yml
+ - c:\python27\lib\site-packages -> appveyor.yml
  - packages -> **\packages.config
 before_build:
-  - appveyor-retry nuget restore
+- appveyor-retry nuget restore
 after_build:
-  - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
-  - cd C:\Projects\fasseto-word\doc
+- appveyor-retry pip install sphinx sphinx-autobuild recommonmark
+- cd C:\Projects\fasseto-word\doc
   #- git checkout %APPVEYOR_REPO_BRANCH%
-  - git checkout -B docs
-  - doxygen.exe "..\Fasetto.Word.Doxyfile"
-  - make html
+- git checkout -B docs
+- doxygen.exe "..\Fasetto.Word.Doxyfile"
+- make html
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -49,14 +54,14 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   parallel: true
-  verbosity: quiet
+  verbosity: minimal
 artifacts:
-  - path: Fasetto.Word\bin\$(platform)\$(configuration)\
-    name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
-    type: zip
-  - path: doc\_build\html
-    name: Fasseto.Word.Docs-${platform}
-    type: zip
+- path: Fasetto.Word\bin\$(platform)\$(configuration)\
+  name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
+  type: zip
+- path: doc\_build\html
+  name: Fasseto.Word.Docs-${platform}
+  type: zip
 deploy:
 - provider: GitHub
   tag: Fasetto.Word-v$(appveyor_build_version)
@@ -69,12 +74,12 @@ deploy:
   on:
     branch: master
 on_success:
-  - git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
-  - git config --global user.email "mitoskalandiel@gmail.com"
-  - git config --global user.name "Mitos Kalandiel"
-  - cd C:\Projects\fasseto-word\doc
-  - git add -A --ignore-removal .
-  - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
+- git config --global credential.helper store
+- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
+- git config --global user.email "mitoskalandiel@gmail.com"
+- git config --global user.name "Mitos Kalandiel"
+- cd C:\Projects\fasseto-word\doc
+- git add -A --ignore-removal .
+- git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
   #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-  - git push origin HEAD
+- git push origin HEAD
