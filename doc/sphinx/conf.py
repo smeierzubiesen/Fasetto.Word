@@ -37,7 +37,7 @@ if read_the_docs_build:
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.todo', 'sphinx.ext.githubpages', 'breathe']
-breathe_projects = { "FasettoWord": "c:/Projects/fasseto-word/doc/doxy/xml/" }
+breathe_projects = { "FasettoWord": "c:\\Projects\\fasseto-word\\doc\\doxy\\xml\\" }
 breathe_default_project = "FasettoWord"
 
 # Add any paths that contain templates here, relative to this directory.
@@ -108,7 +108,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['static']
+html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -181,4 +181,4 @@ texinfo_documents = [
 
 # Where to read the documentation from
 # In this case we already have documentation from doxygen
-html_extra_path = ['..\doxy\xml']
+html_extra_path = ['..\\doxy\\xml\\']
