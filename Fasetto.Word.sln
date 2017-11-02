@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sphinx", "sphinx", "{9AF72C
 		doc\sphinx\index.rst = doc\sphinx\index.rst
 		doc\sphinx\make.bat = doc\sphinx\make.bat
 		doc\sphinx\Makefile = doc\sphinx\Makefile
+		doc\sphinx\requirements.txt = doc\sphinx\requirements.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_static", "_static", "{54452D97-32B2-4EDA-BFEC-457314D255C1}"
