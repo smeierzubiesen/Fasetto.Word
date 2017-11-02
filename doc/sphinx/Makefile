@@ -5,8 +5,8 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = FasettoWord
-SOURCEDIR     = .
-BUILDDIR      = _build
+SOURCEDIR     = ..\doxy\xml\
+BUILDDIR      = ..\build
 
 # Put it first so that "make" without argument is like "make help".
 help:
