@@ -76,4 +76,5 @@ on_success:
   - cd C:\Projects\fasseto-word\doc
   - git add -A --ignore-removal .
   - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
+  - SET
   - git push origin %APPVEYOR_REPO_BRANCH%
