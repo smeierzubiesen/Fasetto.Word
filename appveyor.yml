@@ -42,8 +42,8 @@ before_build:
 after_build:
 - appveyor-retry pip install sphinx sphinx-autobuild recommonmark breathe
 - cd C:\Projects\fasseto-word\doc
-#- git checkout %APPVEYOR_REPO_BRANCH%
 - git checkout -B docs
+- git pull
 - cd sphinx
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
