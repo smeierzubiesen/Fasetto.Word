@@ -17,6 +17,7 @@ branches:
   # blacklist
   except:
     - gh-pages
+    - docs
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
   allow_failures:
@@ -36,9 +37,8 @@ before_build:
 after_build:
   - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasseto-word\doc
-  - git config mydata.branch %APPVEYOR_REPO_BRANCH%
-  - git config --list
-  - git checkout %APPVEYOR_REPO_BRANCH%
+  #- git checkout %APPVEYOR_REPO_BRANCH%
+  - git checkout --track docs
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
 assembly_info:
