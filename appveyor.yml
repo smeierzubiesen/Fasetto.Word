@@ -13,10 +13,6 @@ pull_requests:
   do_not_increment_build_number: true
 skip_branch_with_pr: true
 image: Visual Studio 2017
-configuration: Release
-platform:
-- x86
-- x64
 branches:
   # blacklist
   except:
@@ -36,10 +32,11 @@ cache:
  - c:\python36\lib\site-packages -> appveyor.yml
  - packages -> **\packages.config
 before_build:
-  appveyor-retry nuget restore
+  - appveyor-retry nuget restore
 after_build:
   - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasseto-word\doc
+  - git checkout $(APPVEYOR_REPO_BRANCH)
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
 assembly_info:
@@ -50,7 +47,7 @@ assembly_info:
   assembly_informational_version: '{version}'
 build:
   parallel: true
-  verbosity: minimal
+  verbosity: quiet
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
     name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
