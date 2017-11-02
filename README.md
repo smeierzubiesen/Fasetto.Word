@@ -15,3 +15,6 @@ Codacy Code Quality
 
 Core Infrastructure Initiative
 [![BlackDuck Badge](https://bestpractices.coreinfrastructure.org/projects/1/badge)](https://www.openhub.net/p/Fasetto_Word)
+
+## Progress
+I have so far managed to follow up to lesson 15 and also managed to include some few changes of my own.
