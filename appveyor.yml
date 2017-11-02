@@ -69,7 +69,7 @@ deploy:
 on_success:
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
-  - more "$env:USERPROFILE\.git-credentials"
+  - more "%USERPROFILE%\.git-credentials"
   - git config --global user.email "mitoskalandiel@gmail.com"
   - git config --global user.name "Mitos Kalandiel"
   - cd C:\Projects\fasseto-word\doc
