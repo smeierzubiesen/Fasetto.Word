@@ -173,8 +173,10 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-import subprocess
-subprocess.call('cd .. ; doxygen', shell=True)
+import subprocess, os
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+if read_the_docs_build:
+  subprocess.call('cd .. ; doxygen', shell=True)
 
 # Where to read the documentation from
 # In this case we already have documentation from doxygen

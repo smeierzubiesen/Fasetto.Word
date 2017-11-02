@@ -30,7 +30,7 @@ matrix:
   - platform: x64
     configuration: Release
 install:
-- appveyor-retry choco install doxygen.portable graphviz.portable
+- appveyor-retry choco install -r doxygen.portable graphviz.portable
 cache:
  - C:\ProgramData\chocolatey\bin -> appveyor.yml
  - C:\ProgramData\chocolatey\lib -> appveyor.yml
@@ -40,10 +40,11 @@ cache:
 before_build:
 - appveyor-retry nuget restore
 after_build:
-- appveyor-retry pip install sphinx sphinx-autobuild recommonmark
-- cd C:\Projects\fasseto-word\doc\sphinx
+- appveyor-retry pip install sphinx sphinx-autobuild recommonmark breathe
+- cd C:\Projects\fasseto-word\doc
 #- git checkout %APPVEYOR_REPO_BRANCH%
 - git checkout -B docs
+- cd sphinx
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
 assembly_info:
