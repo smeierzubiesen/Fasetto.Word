@@ -66,10 +66,10 @@ deploy:
     branch: master
 on_success:
   - git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env_auth_token):x-oauth-basic@github.com`n"
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
   - git config --global user.email "mitoskalandiel@gmail.com"
   - git config --global user.name "Mitos Kalandiel"
   - cd C:\Projects\fasseto-word\doc
   - git add -A --ignore-removal .
-  - git commit -a -m "Added updated docs from doxygen/sphinx for version $(appveyor_build_version)"
-  - git push origin $(APPVEYOR_REPO_BRANCH)
+  - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
+  - git push origin $($env:APPVEYOR_REPO_BRANCH)
