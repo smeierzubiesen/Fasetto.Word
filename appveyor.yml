@@ -39,7 +39,6 @@ after_build:
   - git config mydata.branch %APPVEYOR_REPO_BRANCH%
   - git config --list
   - git checkout %APPVEYOR_REPO_BRANCH%
-  #- git checkout $($env:APPVEYOR_REPO_BRANCH)
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
 assembly_info:
@@ -77,5 +76,5 @@ on_success:
   - cd C:\Projects\fasseto-word\doc
   - git add -A --ignore-removal .
   - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-  - git push origin ${APPVEYOR_REPO_BRANCH}
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - git push origin HEAD
