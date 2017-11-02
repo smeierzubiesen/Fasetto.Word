@@ -37,7 +37,8 @@ after_build:
   - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasseto-word\doc
   - git config mydata.branch %APPVEYOR_REPO_BRANCH%
-  - git checkout $env:APPVEYOR_REPO_BRANCH
+  - git config --list
+  - git checkout $($env:APPVEYOR_REPO_BRANCH)
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
 assembly_info:
