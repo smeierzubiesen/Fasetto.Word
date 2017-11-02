@@ -5,17 +5,6 @@
     /// </summary>
     public class ChatListItemViewModel : BaseViewModel
     {
-        #region Singleton
-
-        /// <summary>
-        /// A single instance of the design model (to fill in data during design time)
-        /// </summary>
-        public static ChatListItemViewModel Instance => new ChatListItemDesignModel();
-
-        #endregion Singleton
-
-
-
         #region Public Properties
 
         /// <summary>

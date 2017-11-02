@@ -6,6 +6,17 @@
     /// </summary>
     public class ChatListItemDesignModel : ChatListItemViewModel
     {
+        #region Singleton
+
+        /// <summary>
+        /// A single instance (singleton) of the design model
+        /// </summary>
+        public static ChatListItemDesignModel Instance => new ChatListItemDesignModel();
+
+        #endregion Singleton
+
+
+
         #region Public Constructors
 
         /// <summary>

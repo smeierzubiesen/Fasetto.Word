@@ -1,5 +1,6 @@
 ﻿namespace Fasetto.Word.Core
 {
+    using System.Security;
     using System.Threading.Tasks;
     using System.Windows.Input;
 

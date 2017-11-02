@@ -175,8 +175,12 @@
     <Compile Include="ValueConverters\IoCConverter.cs" />
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ValueConverters\SentByMeToAlignmentConverter.cs" />
+    <Compile Include="ValueConverters\SentByMeToBackgroundConverter.cs" />
     <Compile Include="ValueConverters\StringRgbToBrushConverter.cs" />
     <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\TimeToDisplayTimeConverter.cs" />
+    <Compile Include="ValueConverters\TimeToReadTimeConverter.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />

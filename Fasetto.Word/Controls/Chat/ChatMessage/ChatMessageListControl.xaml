@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="300"
-    d:DesignWidth="300"
+    d:DesignHeight="600"
+    d:DesignWidth="600"
     mc:Ignorable="d">
-    <Grid DataContext="{x:Static core:ChatListDesignModel.Instance}">
+    <Grid VerticalAlignment="Bottom" DataContext="{x:Static core:ChatMessageListDesignModel.Instance}">
         <ScrollViewer VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
