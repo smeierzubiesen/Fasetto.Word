@@ -5,7 +5,7 @@ environment:
   auth_token:
     secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
   appveyor_rdp_password:
-    secure: y6+0kl3pd9B+Nu4usCJngQ==
+    secure: WihliQXigZq/qXP0kU43hw==
 skip_tags: true
 init:
   - git config --global core.autocrlf input
