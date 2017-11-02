@@ -33,7 +33,8 @@ before_build:
 after_build:
   - pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasetto-word\doc
-  - doxygen.exe "C:\projects\fasetto-word\Fasetto.Word.Doxyfile"
+  - doxygen.exe "..\Fasetto.Word.Doxyfile"
+  - make html
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'

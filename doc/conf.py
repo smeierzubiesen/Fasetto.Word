@@ -173,5 +173,6 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
-
+# Where to read the documentation from
+# In this case we already have documentation from doxygen
+html_extra_path = ['_build\html']
