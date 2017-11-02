@@ -36,7 +36,8 @@ before_build:
 after_build:
   - appveyor-retry pip install sphinx sphinx-autobuild recommonmark
   - cd C:\Projects\fasseto-word\doc
-  #- git checkout $(APPVEYOR_REPO_BRANCH)
+  - git config mydata.branch %APPVEYOR_REPO_BRANCH%
+  - git checkout $env:APPVEYOR_REPO_BRANCH
   - doxygen.exe "..\Fasetto.Word.Doxyfile"
   - make html
 assembly_info:
@@ -69,7 +70,6 @@ deploy:
 on_success:
   - git config --global credential.helper store
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
-  - more "%USERPROFILE%\.git-credentials"
   - git config --global user.email "mitoskalandiel@gmail.com"
   - git config --global user.name "Mitos Kalandiel"
   - cd C:\Projects\fasseto-word\doc
