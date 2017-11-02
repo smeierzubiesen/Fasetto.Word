@@ -174,7 +174,7 @@ texinfo_documents = [
 ]
 
 import subprocess
- subprocess.call('cd .. ; doxygen', shell=True)
+subprocess.call('cd .. ; doxygen', shell=True)
 
 # Where to read the documentation from
 # In this case we already have documentation from doxygen
