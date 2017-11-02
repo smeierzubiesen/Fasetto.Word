@@ -24,9 +24,11 @@ matrix:
       configuration: Release
 install:
   - choco install doxygen.portable
+  - choco install graphviz
 cache:
  - C:\ProgramData\chocolatey\bin -> appveyor.yml
  - C:\ProgramData\chocolatey\lib -> appveyor.yml
+ - %APPDATA%\pip\Cache -> appveyor.yml
  - packages -> **\packages.config
 before_build:
   appveyor-retry nuget restore
