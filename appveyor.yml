@@ -14,14 +14,14 @@ platform:
 branches:
   # blacklist
   except:
-	- gh-pages
+    - gh-pages
 matrix:
   fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
   allow_failures:
-	- platform: x86
-	  configuration: Release
-	- platform: x64
-	  configuration: Release
+    - platform: x86
+      configuration: Release
+    - platform: x64
+      configuration: Release
 install:
   - choco install doxygen.portable
   - choco install graphviz
@@ -48,19 +48,19 @@ build:
   verbosity: minimal
 artifacts:
   - path: Fasetto.Word\bin\$(platform)\$(configuration)\
-	name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
-	type zip
+    name: Fasetto.Word-v$(appveyor_build_version)-$(platform)
+    type zip
   - path: doc\_build\html
-	name: Fasseto.Word.Docs-${platform}
-	type: zip
+    name: Fasseto.Word.Docs-${platform}
+    type: zip
 deploy:
 - provider: GitHub
   tag: Fasetto.Word-v$(appveyor_build_version)
   description: Fasetto.Word Version $(appveyor_build_version)
   auth_token:
-	secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
+    secure: hifcN93/wHdEWIaKpGuJz+M73qcBHaLa6ozBz1fKgporFBvnbZGOiCATSawgKdwX
   draft: false
   prerelease: true
   force_update: true
   on:
-	branch: master
+    branch: master
