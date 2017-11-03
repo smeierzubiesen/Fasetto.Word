@@ -83,7 +83,7 @@
             <!--  Text entry box  -->
             <TextBox
                 Grid.Column="1"
-                Padding="0,10"
+                Padding="0,10,12,10"
                 VerticalAlignment="Center"
                 AcceptsReturn="True"
                 AcceptsTab="True"
