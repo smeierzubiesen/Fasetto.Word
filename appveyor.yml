@@ -17,8 +17,6 @@ init:
 - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:auth_token):x-oauth-basic@github.com`n"
 - git config --global user.email "mitoskalandiel@gmail.com"
 - git config --global user.name "Mitos Kalandiel"
-- git checkout -B docs
-- git pull origin docs
 pull_requests:
   do_not_increment_build_number: true
 skip_branch_with_pr: true
@@ -38,6 +36,8 @@ matrix:
 install:
 - appveyor-retry choco install -r doxygen.portable graphviz.portable
 - appveyor-retry pip install sphinx sphinx-autobuild recommonmark breathe
+- git checkout -B docs
+- git pull origin docs
 cache:
 - C:\ProgramData\chocolatey\bin -> appveyor.yml
 - C:\ProgramData\chocolatey\lib -> appveyor.yml
@@ -51,7 +51,7 @@ after_build:
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
 - cd C:\Projects\fasseto-word\doc
-- git add -A --ignore-removal .
+- git add -A --ignore-removal C:\Projects\fasseto-word\doc
 - git commit -a -m "Added updated docs from doxygen/sphinx for version $($env:appveyor_build_version)"
   # This (if uncommented) will enable RDP and block any further build process
   #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
