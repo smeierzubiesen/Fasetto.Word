@@ -48,6 +48,7 @@ before_build:
 - appveyor-retry nuget restore
 after_build:
 - cd C:\Projects\fasseto-word\doc
+- dir
 - rmdir /s /q doxy
 - mkdir doxy
 - cd sphinx
