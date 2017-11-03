@@ -42,4 +42,6 @@
     <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
     <system:String x:Key="FontAwesomeSearchIcon">&#xf002;</system:String>
     <system:String x:Key="FontAwesomeMenuIcon">&#xf142;</system:String>
+    <system:String x:Key="FontAwesomeAttachmentIcon">&#xf0c6;</system:String>
+    <system:String x:Key="FontAwesomeSmileIcon">&#xf118;</system:String>
 </ResourceDictionary>

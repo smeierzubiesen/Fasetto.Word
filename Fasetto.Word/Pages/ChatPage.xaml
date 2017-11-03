@@ -8,22 +8,34 @@
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ChatPageControl"
-    d:DesignHeight="490"
-    d:DesignWidth="400"
+    d:DesignHeight="600"
+    d:DesignWidth="600"
     x:TypeArguments="core:LoginViewModel"
     Background="Transparent"
     mc:Ignorable="d">
     <Grid>
+
         <Grid.RowDefinitions>
+
+            <!--  Title bar  -->
             <RowDefinition Height="Auto" />
+
+            <!--  Chat List  -->
             <RowDefinition Height="*" />
+
+            <!--  Message Send Text box  -->
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Height="50" Background="{StaticResource WordBlueBrush}">
+
+        <!--  Title bar  -->
+        <Grid Height="50">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+
+            <!--  Title text  -->
             <TextBlock
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
@@ -32,11 +44,75 @@
                 FontSize="{StaticResource FontSizeXLarge}"
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Text="Veronica Meier zu Biesen" />
+
+            <!--  Main buttons  -->
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button Content="{StaticResource FontAwesomeSearchIcon}" Style="{StaticResource IconButton}" />
-                <Button Content="{StaticResource FontAwesomeMenuIcon}" Style="{StaticResource IconButton}" />
+                <Button Content="{StaticResource FontAwesomeSearchIcon}" Style="{StaticResource IconGrowButton}" />
+                <Button Content="{StaticResource FontAwesomeMenuIcon}" Style="{StaticResource IconGrowButton}" />
             </StackPanel>
         </Grid>
+
+        <!--  Chat messages  -->
         <local:ChatMessageListControl Grid.Row="1" />
+
+        <!--  Message Send Text box  -->
+        <Grid
+            Grid.Row="2"
+            MinHeight="50"
+            MaxHeight="114"
+            Background="{StaticResource ForegroundLightBrush}">
+            <Grid.ColumnDefinitions>
+                <!--  Attachment button  -->
+                <ColumnDefinition Width="Auto" />
+
+                <!--  Text entry box  -->
+                <ColumnDefinition Width="*" />
+
+                <!--  Additional buttons  -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Attachment button  -->
+            <Button
+                Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                VerticalAlignment="Top"
+                Content="{StaticResource FontAwesomeAttachmentIcon}"
+                Foreground="{StaticResource ForegroundDarkBrush}"
+                Style="{StaticResource IconGrowButton}" />
+
+            <!--  Text entry box  -->
+            <TextBox
+                Grid.Column="1"
+                Padding="0,10"
+                VerticalAlignment="Center"
+                AcceptsReturn="True"
+                AcceptsTab="True"
+                BorderThickness="0"
+                FontSize="{StaticResource FontSizeRegular}"
+                Tag="Write a message..."
+                VerticalScrollBarVisibility="Auto" />
+
+            <!--  Additional buttons  -->
+            <StackPanel
+                Grid.Column="2"
+                Margin="0,0,8,0"
+                VerticalAlignment="Top"
+                Orientation="Horizontal">
+
+                <!--  Emoji button  -->
+                <Button
+                    Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                    Content="{StaticResource FontAwesomeSearchIcon}"
+                    Foreground="{StaticResource WordOrangeBrush}"
+                    Style="{StaticResource IconGrowButton}" />
+
+                <!--  Send button  -->
+                <Button
+                    Padding="8"
+                    Background="{StaticResource WordGreenBrush}"
+                    Content="Send"
+                    FontSize="{StaticResource FontSizeRegular}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </local:BasePage>

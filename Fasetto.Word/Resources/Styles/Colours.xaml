@@ -47,6 +47,6 @@
     <Color x:Key="WordRed">#ff4747</Color>
     <SolidColorBrush x:Key="WordRedBrush" Color="{StaticResource WordRed}" />
 
-    <Color x:Key="WordGreen">#3099c5</Color>
+    <Color x:Key="WordGreen">#309930</Color>
     <SolidColorBrush x:Key="WordGreenBrush" Color="{StaticResource WordGreen}" />
 </ResourceDictionary>
