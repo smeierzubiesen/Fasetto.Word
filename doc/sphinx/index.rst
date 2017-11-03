@@ -5,6 +5,7 @@ Fasetto.Word documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   index
    intro
    doxygen
    about
