@@ -47,7 +47,10 @@ cache:
 before_build:
 - appveyor-retry nuget restore
 after_build:
-- cd C:\Projects\fasseto-word\doc; rmdir /s /q doxy; mkdir doxy; cd sphinx
+- cd C:\Projects\fasseto-word\doc
+- rmdir /s /q doxy
+- mkdir doxy
+- cd sphinx
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
 - cd C:\Projects\fasseto-word\doc
