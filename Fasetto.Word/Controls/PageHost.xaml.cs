@@ -1,10 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Fasetto.Word
+﻿namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
+    using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for PageHost.xaml
     /// </summary>
@@ -37,6 +39,12 @@ namespace Fasetto.Word
         public PageHost()
         {
             InitializeComponent();
+
+            //At Design-time, grab the current page and show it.
+            if (DesignerProperties.GetIsInDesignMode(this))
+            {
+                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Get<ApplicationViewModel>().CurrentPage);
+            }
         }
 
         #endregion Constructor

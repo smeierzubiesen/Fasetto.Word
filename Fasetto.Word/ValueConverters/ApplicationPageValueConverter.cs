@@ -1,9 +1,9 @@
 ﻿namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
     using System;
     using System.Diagnostics;
     using System.Globalization;
-    using Fasetto.Word.Core;
 
     /// <summary>
     /// Convert an <see cref="ApplicationPage"/> to value of a Page
@@ -22,7 +22,7 @@
         /// <param name="parameter">Any parameter passed through</param>
         /// <param name="culture">The language <see cref="T:System.Globalization.CultureInfo"/>.</param>
         /// <returns>The <see cref="T:System.Object"/> containing an actual page.</returns>
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object Convert(object value, Type targetType = null, object parameter = null, CultureInfo culture = null)
         {
             if (value != null)
                 switch ((ApplicationPage)value)
