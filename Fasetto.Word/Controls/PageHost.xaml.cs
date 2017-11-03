@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -67,7 +68,14 @@ namespace Fasetto.Word
             //right after this call due to moving frames
             if (oldPageContent is BasePage oldPage)
             {
+                // Animate old page away
                 oldPage.AnimateOut = true;
+
+                //Once done, free it from memory
+                Task.Delay((int)(oldPage.SlideSeconds * 1000)).ContinueWith((t) =>
+                  {
+                      Application.Current.Dispatcher.Invoke(() => oldPageFrame.Content = null);
+                  });
             }
 
             //Set the new page content
