@@ -48,8 +48,7 @@ before_build:
 - appveyor-retry nuget restore
 after_build:
 - cd C:\Projects\fasseto-word\doc
-- dir
-- rmdir /s /q doxy
+- if exist "C:\Projects\fasseto-word\doc\doxy\" rd /s /q doxy
 - mkdir doxy
 - cd sphinx
 #- doxygen.exe "..\Fasetto.Word.Doxyfile"
