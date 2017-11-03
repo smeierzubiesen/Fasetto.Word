@@ -51,7 +51,6 @@ PROJECT_BRIEF          = "Creating a chat client in C# with WPF and MVVM paradig
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-#PROJECT_LOGO           = C:\projects\fasseto-word\Fasetto.Word\Resources\Logo\AppIcon.png
 PROJECT_LOGO           = ../Fasetto.Word/Resources/Logo/AppIcon.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
@@ -59,7 +58,6 @@ PROJECT_LOGO           = ../Fasetto.Word/Resources/Logo/AppIcon.png
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-#OUTPUT_DIRECTORY       = C:\projects\fasseto-word\doc\doxy
 OUTPUT_DIRECTORY       = ./doxy
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
@@ -533,7 +531,7 @@ CASE_SENSE_NAMES       = NO
 # scope will be hidden.
 # The default value is: NO.
 
-HIDE_SCOPE_NAMES       = NO
+HIDE_SCOPE_NAMES       = YES
 
 # If the HIDE_COMPOUND_REFERENCE tag is set to NO (default) then doxygen will
 # append additional text to a page's title, such as Class Reference. If set to
@@ -792,8 +790,6 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-#INPUT                  = C:\projects\fasseto-word\Fasetto.Word \
-#                         C:\projects\fasseto-word\Fasetto.Word.Core
 INPUT                  = ../Fasetto.Word \
                          ../Fasetto.Word.Core
 
