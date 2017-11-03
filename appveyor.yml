@@ -50,8 +50,8 @@ after_build:
 - cd C:\Projects\fasseto-word\doc
 - if exist "C:\Projects\fasseto-word\doc\doxy\" rd /s /q doxy
 - mkdir doxy
+- doxygen
 - cd sphinx
-#- doxygen.exe "..\Fasetto.Word.Doxyfile"
 - make html
 - cd C:\Projects\fasseto-word\doc
 - git add -A --ignore-removal C:\Projects\fasseto-word\doc
