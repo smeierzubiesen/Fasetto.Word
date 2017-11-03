@@ -1,4 +1,4 @@
-﻿version: 0.15.{build}
+﻿version: 0.16.{build}
 environment:
   BUILD_NUMBER: $(APPVEYOR_BUILD_NUMBER)
   APPVEYOR_CACHE_ENTRY_ZIP_ARGS: -t7z -m0=lzma -mx=7

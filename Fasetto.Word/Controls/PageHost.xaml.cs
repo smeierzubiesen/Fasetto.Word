@@ -1,9 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Fasetto.Word
+﻿namespace Fasetto.Word
 {
+    using Fasetto.Word.Core;
+    using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for PageHost.xaml
     /// </summary>
@@ -36,6 +39,12 @@ namespace Fasetto.Word
         public PageHost()
         {
             InitializeComponent();
+
+            //At Design-time, grab the current page and show it.
+            if (DesignerProperties.GetIsInDesignMode(this))
+            {
+                NewPage.Content = (BasePage)new ApplicationPageValueConverter().Convert(IoC.Get<ApplicationViewModel>().CurrentPage);
+            }
         }
 
         #endregion Constructor
@@ -67,7 +76,14 @@ namespace Fasetto.Word
             //right after this call due to moving frames
             if (oldPageContent is BasePage oldPage)
             {
+                // Animate old page away
                 oldPage.AnimateOut = true;
+
+                //Once done, free it from memory
+                Task.Delay((int)(oldPage.SlideSeconds * 1000)).ContinueWith((t) =>
+                  {
+                      Application.Current.Dispatcher.Invoke(() => oldPageFrame.Content = null);
+                  });
             }
 
             //Set the new page content

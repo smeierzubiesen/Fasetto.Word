@@ -7,8 +7,7 @@
     xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="Page"
-    Title="LoginPage"
+    x:Name="LoginPageControl"
     d:DesignHeight="490"
     d:DesignWidth="400"
     x:TypeArguments="core:LoginViewModel"
@@ -43,7 +42,10 @@
                                 Text="It's all about having fun" />
 
                             <!--  email input  -->
-                            <TextBox Tag="EMail" Text="{Binding Email}" />
+                            <TextBox
+                                local:IsFocusedProperty.Value="True"
+                                Tag="EMail"
+                                Text="{Binding Email}" />
 
                             <!--  password input  -->
                             <PasswordBox
@@ -51,14 +53,15 @@
                                 Margin="0,0,0,30"
                                 Tag="Password" />
 
-                            <!--  Next button  -->
+                            <!--  Login button  -->
                             <!--  TODO maybe disable the button on the {Binding LoginIsRunning}, this will need a ValueConverter to invert the boolean  -->
                             <Button
                                 HorizontalAlignment="Center"
                                 local:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=Page}"
-                                Content="Login" />
+                                Content="Login"
+                                IsDefault="True" />
                         </StackPanel>
                     </Border>
                     <Button

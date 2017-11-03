@@ -9,6 +9,7 @@
 namespace Fasetto.Word
 {
     using Fasetto.Word.Core;
+    using System.ComponentModel;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
@@ -17,7 +18,7 @@ namespace Fasetto.Word
     /// <summary>
     /// BasePage for all pages to inherit from and gain basic functionality
     /// </summary>
-    public class BasePage : Page
+    public class BasePage : UserControl
     {
         #region Public Constructors
 
@@ -27,6 +28,10 @@ namespace Fasetto.Word
         /// </summary>
         public BasePage()
         {
+            //During Desing-time don't animate
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             // If we are animating, hide the animation, for it to load properly
             if (PageLoadAnimation != PageAnimation.None)
             {
@@ -99,7 +104,7 @@ namespace Fasetto.Word
             switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds, width: (int)Application.Current.MainWindow.Width);
                     break;
 
                 default:
@@ -164,21 +169,21 @@ namespace Fasetto.Word
         /// </summary>
         public VM ViewModel
         {
-            get => mViewModel;
+            get => _ViewModel;
 
             set
             {
                 // if nothing has changed simply return
-                if (mViewModel == value)
+                if (_ViewModel == value)
                 {
                     return;
                 }
 
                 // Update the mViewModel
-                mViewModel = value;
+                _ViewModel = value;
 
                 // Update the DataContext
-                DataContext = mViewModel;
+                DataContext = _ViewModel;
             }
         }
 
@@ -189,7 +194,7 @@ namespace Fasetto.Word
         /// <summary>
         /// The mViewModel associated with this page
         /// </summary>
-        private VM mViewModel { get; set; }
+        private VM _ViewModel { get; set; }
 
         #endregion Private members
     }

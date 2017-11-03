@@ -10,7 +10,7 @@
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
             <!--  Sidebar  -->
-            <Border Grid.Column="0" Background="{StaticResource BackgroundVeryLightBrush}">
+            <Border Grid.Column="0">
                 <!--  Content  -->
                 <Grid>
                     <Grid.RowDefinitions>
@@ -21,7 +21,7 @@
                     <Grid
                         Grid.Row="0"
                         Height="50"
-                        Background="{StaticResource WordBlueBrush}">
+                        Background="{StaticResource WordTransparentBlueBrush}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -42,7 +42,9 @@
                             Foreground="{StaticResource WordDarkBlueBrush}"
                             Style="{StaticResource IconButton}" />
                     </Grid>
-                    <ContentPresenter Grid.Row="1" />
+                    <Border Grid.Row="1" Background="{StaticResource BackgroundVeryLightBrush}">
+                        <ContentPresenter />
+                    </Border>
                 </Grid>
             </Border>
         </ControlTemplate>

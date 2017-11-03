@@ -7,14 +7,36 @@
     xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="Page"
-    Title="Chat"
+    x:Name="ChatPageControl"
     d:DesignHeight="490"
     d:DesignWidth="400"
     x:TypeArguments="core:LoginViewModel"
     Background="Transparent"
     mc:Ignorable="d">
-    <Border Background="Transparent" Opacity="0.9">
-        <local:ChatMessageListControl />
-    </Border>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Height="50" Background="{StaticResource WordBlueBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource LatoRegular}"
+                FontSize="{StaticResource FontSizeXLarge}"
+                Foreground="{StaticResource ForegroundLightBrush}"
+                Text="Veronica Meier zu Biesen" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="{StaticResource FontAwesomeSearchIcon}" Style="{StaticResource IconButton}" />
+                <Button Content="{StaticResource FontAwesomeMenuIcon}" Style="{StaticResource IconButton}" />
+            </StackPanel>
+        </Grid>
+        <local:ChatMessageListControl Grid.Row="1" />
+    </Grid>
 </local:BasePage>

@@ -7,8 +7,7 @@
     xmlns:design="clr-namespace:Fasetto.Word;assembly=Fasetto.Word"
     xmlns:local="clr-namespace:Fasetto.Word"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="Page"
-    Title="RegisterPage"
+    x:Name="RegisterPageControl"
     d:DesignHeight="490"
     d:DesignWidth="400"
     x:TypeArguments="core:RegisterViewModel"
@@ -43,7 +42,10 @@
                                 Text="It's all about having fun" />
 
                             <!--  email input  -->
-                            <TextBox Tag="EMail" Text="{Binding Email}" />
+                            <TextBox
+                                local:IsFocusedProperty.Value="True"
+                                Tag="EMail"
+                                Text="{Binding Email}" />
 
                             <!--  password input  -->
                             <PasswordBox
@@ -58,7 +60,8 @@
                                 local:IsBusyProperty.Value="{Binding RegisterIsRunning}"
                                 Command="{Binding RegisterCommand}"
                                 CommandParameter="{Binding ElementName=Page}"
-                                Content="Register" />
+                                Content="Register"
+                                IsDefault="True" />
                         </StackPanel>
                     </Border>
                     <Button

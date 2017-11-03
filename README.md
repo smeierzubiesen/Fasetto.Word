@@ -16,8 +16,18 @@ Codacy Code Quality
 Core Infrastructure Initiative
 [![BlackDuck Badge](https://bestpractices.coreinfrastructure.org/projects/1/badge)](https://www.openhub.net/p/Fasetto_Word)
 
-Documentation Build Status
+Documentation Build Status for master branch
 [![ReadTheDocs Badge](https://readthedocs.org/projects/fasettoword/badge/?version=latest)](http://fasettoword.readthedocs.io/en/latest/)
+
+Documentation Build Status for dev branch
+[![ReadTheDocs Badge](https://readthedocs.org/projects/fasettoword/badge/?version=dev)](http://fasettoword.readthedocs.io/en/dev/)
 
 ## Progress
 I have so far managed to follow up to lesson 15 and also managed to include some few changes of my own.
+
+### Documentation
+After much deliberation and trial-and-error (more error than anything lol) I have managed to make ReadTheDocs.io the main source for the docs.
+After my initial attempt at generating the docs from source, via doxygen on Appveyor, I have finally realized that none of that was necessary.
+Appveyor only needs to build the app itself. ReadTheDocs is perfectly capable of generating the documentation by first calling doxygen and the generating reStructured text from those sources.
+
+_I'm seriously considering to put doxygen back though, so it can at least generate HTML files from my documentation, while appveyor does its thing, although the build time on appveyor has *dramatically* decreased, so yeah_

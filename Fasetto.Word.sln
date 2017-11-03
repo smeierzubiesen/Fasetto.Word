@@ -17,33 +17,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fasetto.Word.Core", "Fasetto.Word.Core\Fasetto.Word.Core.csproj", "{84E96AFB-D660-4CF4-8426-686CB1E1DFAB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{E2385F4C-93A4-429B-9715-488A5CD9CEA0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{DC44C19D-79F9-451C-AD8B-5D68904FAADD}"
 	ProjectSection(SolutionItems) = preProject
-		doc\conf.py = doc\conf.py
 		doc\Doxyfile = doc\Doxyfile
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{3CFA6561-2EFB-4008-8827-BE9256AE88CA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{24C4C93A-168E-4B90-9875-EC6EC6765CFC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doctrees", "doctrees", "{D3A57B43-5D81-4693-AE49-7AD6F303EC99}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doctrees", "doctrees", "{79EB9B7F-BDAA-45B5-A518-F32A40ACE793}"
 	ProjectSection(SolutionItems) = preProject
 		doc\build\doctrees\environment.pickle = doc\build\doctrees\environment.pickle
 		doc\build\doctrees\index.doctree = doc\build\doctrees\index.doctree
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sphinx", "sphinx", "{9AF72C0D-7318-4B1D-A344-8ED994B982CD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doxy", "doxy", "{BC4569A7-59ED-4B0B-A427-36BA041AEEC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sphinx", "sphinx", "{0D457CBE-CF43-43DE-BC73-A5055FCF8BFB}"
 	ProjectSection(SolutionItems) = preProject
 		doc\sphinx\about.rst = doc\sphinx\about.rst
 		doc\sphinx\conf.py = doc\sphinx\conf.py
+		doc\sphinx\doxygen.rst = doc\sphinx\doxygen.rst
 		doc\sphinx\index.rst = doc\sphinx\index.rst
 		doc\sphinx\make.bat = doc\sphinx\make.bat
 		doc\sphinx\Makefile = doc\sphinx\Makefile
 		doc\sphinx\requirements.txt = doc\sphinx\requirements.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_static", "_static", "{54452D97-32B2-4EDA-BFEC-457314D255C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_static", "_static", "{730B5B03-1F74-4D69-8127-83FAFA8FE551}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_templates", "_templates", "{61E83358-E6F4-40AE-8441-268171BA53D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_templates", "_templates", "{A0DBFC61-F708-4286-BE23-03A06A6CC6D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,11 +76,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3CFA6561-2EFB-4008-8827-BE9256AE88CA} = {E2385F4C-93A4-429B-9715-488A5CD9CEA0}
-		{D3A57B43-5D81-4693-AE49-7AD6F303EC99} = {3CFA6561-2EFB-4008-8827-BE9256AE88CA}
-		{9AF72C0D-7318-4B1D-A344-8ED994B982CD} = {E2385F4C-93A4-429B-9715-488A5CD9CEA0}
-		{54452D97-32B2-4EDA-BFEC-457314D255C1} = {9AF72C0D-7318-4B1D-A344-8ED994B982CD}
-		{61E83358-E6F4-40AE-8441-268171BA53D6} = {9AF72C0D-7318-4B1D-A344-8ED994B982CD}
+		{24C4C93A-168E-4B90-9875-EC6EC6765CFC} = {DC44C19D-79F9-451C-AD8B-5D68904FAADD}
+		{79EB9B7F-BDAA-45B5-A518-F32A40ACE793} = {24C4C93A-168E-4B90-9875-EC6EC6765CFC}
+		{BC4569A7-59ED-4B0B-A427-36BA041AEEC0} = {DC44C19D-79F9-451C-AD8B-5D68904FAADD}
+		{0D457CBE-CF43-43DE-BC73-A5055FCF8BFB} = {DC44C19D-79F9-451C-AD8B-5D68904FAADD}
+		{730B5B03-1F74-4D69-8127-83FAFA8FE551} = {0D457CBE-CF43-43DE-BC73-A5055FCF8BFB}
+		{A0DBFC61-F708-4286-BE23-03A06A6CC6D9} = {0D457CBE-CF43-43DE-BC73-A5055FCF8BFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCCC085D-4D09-44FE-A6A0-DC776363DB0A}
