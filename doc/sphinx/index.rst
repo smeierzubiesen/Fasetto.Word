@@ -9,8 +9,9 @@ Welcome to Fasetto.Word's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   Intro
-   :doc:about
+
+   intro
+   about
 
 Indices and tables
 ==================
