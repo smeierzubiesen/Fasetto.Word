@@ -37,7 +37,7 @@ if read_the_docs_build:
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.todo', 'sphinx.ext.githubpages', 'breathe']
-breathe_projects = { "FasettoWord": "c:\\Projects\\fasseto-word\\doc\\doxy\\xml\\" }
+breathe_projects = { "FasettoWord": "../doxy/xml/" }
 breathe_default_project = "FasettoWord"
 
 # Add any paths that contain templates here, relative to this directory.
@@ -181,4 +181,4 @@ texinfo_documents = [
 
 # Where to read the documentation from
 # In this case we already have documentation from doxygen
-html_extra_path = ['..\\doxy\\xml\\']
+#html_extra_path = ['..\\doxy\\xml\\']
