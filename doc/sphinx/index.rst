@@ -6,7 +6,9 @@ Fasetto.Word documentation!
    :caption: Contents:
 
    intro
+   doxygen
    about
+   
 
 Indices and tables
 ==================
