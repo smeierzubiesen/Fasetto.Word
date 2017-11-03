@@ -122,6 +122,13 @@ html_static_path = ['_static']
 #    ]
 #}
 
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "MitosKalandiel", # Username
+    "github_repo": "Fasetto.Word", # Repo name
+    "github_version": "dev", # Version
+    "conf_py_path": "/sphinx/", # Path in the checkout to the docs root
+}
 
 # -- Options for HTMLHelp output ------------------------------------------
 

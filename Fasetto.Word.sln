@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doctrees", "doctrees", "{D3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sphinx", "sphinx", "{9AF72C0D-7318-4B1D-A344-8ED994B982CD}"
 	ProjectSection(SolutionItems) = preProject
+		doc\sphinx\about.rst = doc\sphinx\about.rst
 		doc\sphinx\conf.py = doc\sphinx\conf.py
 		doc\sphinx\index.rst = doc\sphinx\index.rst
 		doc\sphinx\make.bat = doc\sphinx\make.bat
