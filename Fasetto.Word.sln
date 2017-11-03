@@ -11,12 +11,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
-		Fasetto.Word.Doxyfile = Fasetto.Word.Doxyfile
 		Fasetto.Word.xml = Fasetto.Word.xml
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fasetto.Word.Core", "Fasetto.Word.Core\Fasetto.Word.Core.csproj", "{84E96AFB-D660-4CF4-8426-686CB1E1DFAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{E2385F4C-93A4-429B-9715-488A5CD9CEA0}"
+	ProjectSection(SolutionItems) = preProject
+		doc\conf.py = doc\conf.py
+		doc\Doxyfile = doc\Doxyfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{3CFA6561-2EFB-4008-8827-BE9256AE88CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doctrees", "doctrees", "{D3A57B43-5D81-4693-AE49-7AD6F303EC99}"
+	ProjectSection(SolutionItems) = preProject
+		doc\build\doctrees\environment.pickle = doc\build\doctrees\environment.pickle
+		doc\build\doctrees\index.doctree = doc\build\doctrees\index.doctree
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sphinx", "sphinx", "{9AF72C0D-7318-4B1D-A344-8ED994B982CD}"
+	ProjectSection(SolutionItems) = preProject
+		doc\sphinx\about.rst = doc\sphinx\about.rst
+		doc\sphinx\conf.py = doc\sphinx\conf.py
+		doc\sphinx\index.rst = doc\sphinx\index.rst
+		doc\sphinx\make.bat = doc\sphinx\make.bat
+		doc\sphinx\Makefile = doc\sphinx\Makefile
+		doc\sphinx\requirements.txt = doc\sphinx\requirements.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_static", "_static", "{54452D97-32B2-4EDA-BFEC-457314D255C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_templates", "_templates", "{61E83358-E6F4-40AE-8441-268171BA53D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +72,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CFA6561-2EFB-4008-8827-BE9256AE88CA} = {E2385F4C-93A4-429B-9715-488A5CD9CEA0}
+		{D3A57B43-5D81-4693-AE49-7AD6F303EC99} = {3CFA6561-2EFB-4008-8827-BE9256AE88CA}
+		{9AF72C0D-7318-4B1D-A344-8ED994B982CD} = {E2385F4C-93A4-429B-9715-488A5CD9CEA0}
+		{54452D97-32B2-4EDA-BFEC-457314D255C1} = {9AF72C0D-7318-4B1D-A344-8ED994B982CD}
+		{61E83358-E6F4-40AE-8441-268171BA53D6} = {9AF72C0D-7318-4B1D-A344-8ED994B982CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCCC085D-4D09-44FE-A6A0-DC776363DB0A}
