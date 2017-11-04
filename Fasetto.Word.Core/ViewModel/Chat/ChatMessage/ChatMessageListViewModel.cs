@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Fasetto.Word.Core
 {
@@ -10,10 +11,49 @@ namespace Fasetto.Word.Core
         #region Public Properties
 
         /// <summary>
+        /// True to indicate that the attachment menu is visible
+        /// </summary>
+        public bool AttachmentMenuVisible { get; set; }
+
+        /// <summary>
         /// The chat list items
         /// </summary>
         public List<ChatMessageListItemViewModel> Items { get; set; }
 
         #endregion Public Properties
+
+        #region Commands
+
+        /// <summary>
+        /// The command for when the Attachment Button is clicked
+        /// </summary>
+        public ICommand AttachmentButtonCommand { get; set; }
+
+        #endregion Commands
+
+        #region Constructor
+
+        /// <summary>
+        /// The ChatMessageListViewModel constructor
+        /// </summary>
+        public ChatMessageListViewModel()
+        {
+            //Create commands
+            AttachmentButtonCommand = new RelayCommand(AttachmentButton);
+        }
+
+        #endregion Constructor
+
+        #region Command Methods
+
+        /// <summary>
+        /// When the attachement button is clicked, show/hide the attachment popup
+        /// </summary>
+        public void AttachmentButton()
+        {
+            AttachmentMenuVisible ^= true;
+        }
+
+        #endregion Command Methods
     }
 }

@@ -10,7 +10,7 @@
     x:Name="ChatPageControl"
     d:DesignHeight="600"
     d:DesignWidth="600"
-    x:TypeArguments="core:LoginViewModel"
+    x:TypeArguments="core:ChatMessageListViewModel"
     Background="Transparent"
     mc:Ignorable="d">
     <Grid>
@@ -55,6 +55,14 @@
         <!--  Chat messages  -->
         <local:ChatMessageListControl Grid.Row="1" />
 
+        <!--  Attachment Menu Popup  -->
+        <local:BubbleContent
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            local:AnimateSlideInFromBottomProperty.Value="{Binding AttachmentMenuVisible}"
+            Visibility="{Binding AttachmentMenuVisible, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" />
+
         <!--  Message Send Text box  -->
         <Grid
             Grid.Row="2"
@@ -76,6 +84,7 @@
             <Button
                 Height="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
                 VerticalAlignment="Top"
+                Command="{Binding AttachmentButtonCommand}"
                 Content="{StaticResource FontAwesomeAttachmentIcon}"
                 Foreground="{StaticResource ForegroundDarkBrush}"
                 Style="{StaticResource IconGrowButton}" />
