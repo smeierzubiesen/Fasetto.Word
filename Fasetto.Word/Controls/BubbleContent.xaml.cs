@@ -9,6 +9,9 @@ namespace Fasetto.Word
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public BubbleContent()
         {
             InitializeComponent();

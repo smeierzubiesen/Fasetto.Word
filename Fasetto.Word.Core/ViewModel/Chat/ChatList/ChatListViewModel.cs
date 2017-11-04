@@ -5,7 +5,7 @@ namespace Fasetto.Word.Core
     /// <summary>
     /// A ViewModel for the overview chatlist
     /// </summary>
-    public class ChatListViewModel : BaseViewModel
+    public class ChatListViewModel : BasePopupMenuViewModel
     {
         #region Public Properties
 

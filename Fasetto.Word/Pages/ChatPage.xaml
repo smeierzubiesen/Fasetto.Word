@@ -60,7 +60,8 @@
             Grid.Row="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            local:AnimateSlideInFromBottomProperty.Value="{Binding AttachmentMenuVisible}"
+            local:AnimateSlideInFromBottomProperty.Value="{Binding ViewModel.AttachmentMenuVisible, RelativeSource={RelativeSource AncestorType={x:Type local:ChatPage}}}"
+            DataContext="{Binding AttachmentMenu}"
             Visibility="{Binding AttachmentMenuVisible, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" />
 
         <!--  Message Send Text box  -->

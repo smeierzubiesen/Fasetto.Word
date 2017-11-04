@@ -6,9 +6,14 @@ namespace Fasetto.Word.Core
     /// <summary>
     /// A ViewModel for the message list in a chat
     /// </summary>
-    public class ChatMessageListViewModel : BaseViewModel
+    public class ChatMessageListViewModel : BasePopupMenuViewModel
     {
         #region Public Properties
+
+        /// <summary>
+        /// The viewmodel for the attachment menu
+        /// </summary>
+        public ChatAttachmentPopupMenuViewModel AttachmentMenu { get; set; }
 
         /// <summary>
         /// True to indicate that the attachment menu is visible
@@ -40,6 +45,9 @@ namespace Fasetto.Word.Core
         {
             //Create commands
             AttachmentButtonCommand = new RelayCommand(AttachmentButton);
+
+            //Make a default menu
+            AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
         }
 
         #endregion Constructor

@@ -3,7 +3,7 @@
     /// <summary>
     /// A ViewModel for each chat list item in the overview chatlist
     /// </summary>
-    public class ChatListItemViewModel : BaseViewModel
+    public class ChatListItemViewModel : BasePopupMenuViewModel
     {
         #region Public Properties
 

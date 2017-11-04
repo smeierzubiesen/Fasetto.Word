@@ -143,7 +143,7 @@ namespace Fasetto.Word
     /// </summary>
     /// <typeparam name="VM">The mViewModel Type</typeparam>
     public class BasePage<VM> : BasePage
-        where VM : BaseViewModel, new()
+        where VM : Core.BasePopupMenuViewModel, new()
 
     {
         #region Constructor

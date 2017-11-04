@@ -3,7 +3,7 @@
     /// <summary>
     /// The application state as a viewmodel
     /// </summary>
-    public class ApplicationViewModel : BaseViewModel
+    public class ApplicationViewModel : BasePopupMenuViewModel
     {
         #region Public Properties
 

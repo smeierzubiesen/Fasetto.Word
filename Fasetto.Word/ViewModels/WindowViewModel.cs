@@ -7,7 +7,7 @@
     /// <summary>
     /// The View model for the windowHandle
     /// </summary>
-    internal class WindowViewModel : BaseViewModel
+    internal class WindowViewModel : Core.BasePopupMenuViewModel
     {
         #region private members
 
