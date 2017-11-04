@@ -78,6 +78,33 @@ namespace Fasetto.Word
     }
 
     /// <summary>
+    /// Animates a framework element sliding it in from the bottom on show and sliding it out to the
+    /// bottom on hide
+    /// </summary>
+    public class AnimateSlideInFromBottomProperty : AnimateBaseProperty<AnimateSlideInFromBottomProperty>
+    {
+        #region Protected Methods
+
+        /// <summary>
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
+        protected override async void DoAnimationAsync(FrameworkElement element, bool value)
+        {
+            if (value)
+            {
+                await element.SlideAndFadeInFromBottomAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+            else
+            {
+                await element.SlideAndFadeOutToBottomAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+        }
+
+        #endregion Protected Methods
+    }
+
+    /// <summary>
     /// Animates a framework element sliding it in from the left on show and sliding it out to the
     /// left on hide
     /// </summary>
@@ -98,6 +125,60 @@ namespace Fasetto.Word
             else
             {
                 await element.SlideAndFadeOutToLeftAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+        }
+
+        #endregion Protected Methods
+    }
+
+    /// <summary>
+    /// Animates a framework element sliding it in from the left on show and sliding it out to the
+    /// left on hide
+    /// </summary>
+    public class AnimateSlideInFromRightProperty : AnimateBaseProperty<AnimateSlideInFromRightProperty>
+    {
+        #region Protected Methods
+
+        /// <summary>
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
+        protected override async void DoAnimationAsync(FrameworkElement element, bool value)
+        {
+            if (value)
+            {
+                await element.SlideAndFadeInFromRightAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+            else
+            {
+                await element.SlideAndFadeOutToRightAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+        }
+
+        #endregion Protected Methods
+    }
+
+    /// <summary>
+    /// Animates a framework element sliding it in from the bottom on show and sliding it out to the
+    /// bottom on hide
+    /// </summary>
+    public class AnimateSlideInFromTopProperty : AnimateBaseProperty<AnimateSlideInFromTopProperty>
+    {
+        #region Protected Methods
+
+        /// <summary>
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="value"></param>
+        protected override async void DoAnimationAsync(FrameworkElement element, bool value)
+        {
+            if (value)
+            {
+                await element.SlideAndFadeInFromTopAsync(FirstLoad ? 0 : 0.3f, false);
+            }
+            else
+            {
+                await element.SlideAndFadeOutToTopAsync(FirstLoad ? 0 : 0.3f, false);
             }
         }
 

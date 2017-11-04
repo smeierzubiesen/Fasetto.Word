@@ -2,11 +2,11 @@
 {
     using Fasetto.Word.Core;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     /// <summary>
     /// Interaction logic for ChatPage.xaml
     /// </summary>
-    public partial class ChatPage : BasePage<LoginViewModel>
+    public partial class ChatPage : BasePage<ChatMessageListViewModel>
     {
         #region Public Constructors
 

@@ -7,7 +7,7 @@
     /// <summary>
     /// The View model for the register screen
     /// </summary>
-    public class RegisterViewModel : BaseViewModel
+    public class RegisterViewModel : BasePopupMenuViewModel
     {
         #region Constructor
 

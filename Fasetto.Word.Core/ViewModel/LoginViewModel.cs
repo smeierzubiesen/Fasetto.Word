@@ -7,7 +7,7 @@
     /// <summary>
     /// The View model for the login screen
     /// </summary>
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BasePopupMenuViewModel
     {
         #region Constructor
 

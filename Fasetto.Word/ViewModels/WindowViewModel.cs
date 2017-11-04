@@ -7,7 +7,7 @@
     /// <summary>
     /// The View model for the windowHandle
     /// </summary>
-    internal class WindowViewModel : BaseViewModel
+    internal class WindowViewModel : Core.BasePopupMenuViewModel
     {
         #region private members
 
@@ -121,7 +121,7 @@
         /// <summary>
         /// The size of the resize border around the windowHandle
         /// </summary>
-        public int ResizeBorder => Borderless ? 0 : 10;
+        public int ResizeBorder => 10;
 
         /// <summary>
         /// Gets or sets the size of the resize border around the windowHandle, taking into account
